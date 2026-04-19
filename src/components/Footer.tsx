@@ -6,8 +6,8 @@ import { Github, Linkedin, Mail, MessageCircle, Heart } from 'lucide-react';
 const socialLinks = [
   { icon: Github, href: 'https://github.com', label: 'GitHub' },
   { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: MessageCircle, href: 'https://wa.me/923XXXXXXXXX', label: 'WhatsApp' },
-  { icon: Mail, href: 'mailto:mustafa@example.com', label: 'Email' },
+  { icon: MessageCircle, href: 'https://wa.me/923400488902', label: 'WhatsApp' },
+  { icon: Mail, href: 'mailto:mustafahussaindumra798@gmail.com', label: 'Email' },
 ];
 
 const footerLinks = [

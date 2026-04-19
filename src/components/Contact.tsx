@@ -3,16 +3,23 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import SectionHeader from './SectionHeader';
-import { Send, Mail, MapPin, MessageCircle, Phone, Loader2, CheckCircle } from 'lucide-react';
+import { Send, Mail, MapPin, MessageCircle, Phone, Loader2, CheckCircle, Github, Linkedin } from 'lucide-react';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
 
+  const socialLinks = [
+    { icon: Github, href: 'https://github.com', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+    { icon: MessageCircle, href: 'https://wa.me/923400488902', label: 'WhatsApp' },
+    { icon: Mail, href: 'mailto:mustafahussaindumra798@gmail.com', label: 'Email' },
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
-    const mailto = `mailto:mustafa@example.com?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)}`;
+    const mailto = `mailto:mustafahussaindumra798@gmail.com?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)}`;
     window.open(mailto, '_blank');
     setTimeout(() => {
       setStatus('sent');
@@ -39,13 +46,13 @@ export default function Contact() {
               <p className="text-[var(--muted)] text-sm leading-relaxed">Whether you need a website, an AI chatbot, or a custom web application, I&apos;m here to help.</p>
             </div>
             <div className="space-y-4">
-              <a href="https://wa.me/923123456789" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 p-4 rounded-xl glass hover:border-green-500/30 transition-all">
+              <motion.a whileHover={{ x: 5 }} href="https://wa.me/923400488902" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 p-4 rounded-xl glass hover:border-green-500/30 transition-all">
                 <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center"><MessageCircle className="w-5 h-5 text-green-400" /></div>
                 <div><p className="text-sm font-semibold">WhatsApp</p><p className="text-xs text-[var(--muted)]">Quick response via WhatsApp</p></div>
-              </a>
-              <a href="mailto:mustafa@example.com" className="group flex items-center gap-4 p-4 rounded-xl glass hover:border-primary/30 transition-all">
+              </motion.a>
+              <a href="mailto:mustafahussaindumra798@gmail.com" className="group flex items-center gap-4 p-4 rounded-xl glass hover:border-primary/30 transition-all">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"><Mail className="w-5 h-5 text-primary" /></div>
-                <div><p className="text-sm font-semibold">Email</p><p className="text-xs text-[var(--muted)]">mustafa@example.com</p></div>
+                <div><p className="text-sm font-semibold">Email</p><p className="text-xs text-[var(--muted)]">mustafahussaindumra798@gmail.com</p></div>
               </a>
             </div>
           </motion.div>
