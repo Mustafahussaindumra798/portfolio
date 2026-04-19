@@ -85,20 +85,9 @@ export default function Footer() {
         <div className="h-px bg-[var(--card-border)] mb-6" />
 
         {/* Copyright */}
-        <div className="text-center space-y-3">
+        <div className="text-center">
           <p className="text-sm text-[var(--muted)]">
             © {new Date().getFullYear()} Mustafa Hussain. All rights reserved.
-          </p>
-          <p className="text-xs text-[var(--muted)]/60">
-            Made with <Heart className="inline w-3 h-3 text-red-400 fill-red-400" /> by{' '}
-            <a
-              href="https://cloudexify.site"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-primary transition-colors"
-            >
-              Cloudexify
-            </a>
           </p>
         </div>
       </div>

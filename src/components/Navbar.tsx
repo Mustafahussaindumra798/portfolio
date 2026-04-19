@@ -71,15 +71,18 @@ export default function Navbar() {
                 e.preventDefault();
                 handleNavClick('#home');
               }}
-              className="relative group"
+              className="relative group flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="font-syne text-2xl md:text-3xl font-bold">
-                <span className="text-primary">M</span>
-                <span className="text-foreground">H</span>
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-primary to-accent p-[1px] shadow-[0_0_20px_rgba(0,212,255,0.2)]">
+                <div className="w-full h-full rounded-[11px] bg-[var(--background)] flex items-center justify-center">
+                  <span className="font-syne text-xl md:text-2xl font-bold text-gradient">M</span>
+                </div>
+              </div>
+              <span className="font-syne text-xl md:text-2xl font-bold tracking-tighter">
+                Hussain
               </span>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300" />
             </motion.a>
 
             {/* Desktop Navigation */}

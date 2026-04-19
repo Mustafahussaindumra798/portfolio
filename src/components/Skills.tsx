@@ -124,15 +124,17 @@ export default function Skills() {
                     }}
                     viewport={{ once: true }}
                     whileHover={{
-                      scale: 1.05,
-                      y: -4,
+                      scale: 1.1,
+                      rotateY: 10,
+                      rotateX: -10,
+                      z: 20
                     }}
-                    className="group flex items-center gap-2.5 px-4 py-2.5 rounded-xl glass border border-transparent hover:border-primary/30 transition-all duration-300 cursor-default hover:shadow-[0_0_20px_rgba(0,212,255,0.1)]"
+                    className="group flex items-center gap-2.5 px-5 py-3 rounded-2xl glass border border-transparent hover:border-primary/30 transition-all duration-300 cursor-default hover:shadow-[0_15px_30px_rgba(0,212,255,0.15)] skill-3d"
                   >
-                    <span className="text-[var(--muted)] group-hover:text-primary transition-colors duration-300">
+                    <span className="text-[var(--muted)] group-hover:text-primary transition-colors duration-300 transform group-hover:scale-110 group-hover:translate-z-10">
                       {skill.icon}
                     </span>
-                    <span className="text-sm font-medium">{skill.name}</span>
+                    <span className="text-sm font-semibold tracking-tight">{skill.name}</span>
                   </motion.div>
                 ))}
               </div>

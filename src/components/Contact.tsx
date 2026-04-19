@@ -39,7 +39,7 @@ export default function Contact() {
               <p className="text-[var(--muted)] text-sm leading-relaxed">Whether you need a website, an AI chatbot, or a custom web application, I&apos;m here to help.</p>
             </div>
             <div className="space-y-4">
-              <a href="https://wa.me/923XXXXXXXXX" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 p-4 rounded-xl glass hover:border-green-500/30 transition-all">
+              <a href="https://wa.me/923123456789" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 p-4 rounded-xl glass hover:border-green-500/30 transition-all">
                 <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center"><MessageCircle className="w-5 h-5 text-green-400" /></div>
                 <div><p className="text-sm font-semibold">WhatsApp</p><p className="text-xs text-[var(--muted)]">Quick response via WhatsApp</p></div>
               </a>
@@ -47,14 +47,6 @@ export default function Contact() {
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"><Mail className="w-5 h-5 text-primary" /></div>
                 <div><p className="text-sm font-semibold">Email</p><p className="text-xs text-[var(--muted)]">mustafa@example.com</p></div>
               </a>
-              <div className="flex items-center gap-4 p-4 rounded-xl glass">
-                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center"><MapPin className="w-5 h-5 text-accent-300" /></div>
-                <div><p className="text-sm font-semibold">Location</p><p className="text-xs text-[var(--muted)]">Pakistan 🇵🇰</p></div>
-              </div>
-              <div className="flex items-center gap-4 p-4 rounded-xl glass">
-                <div className="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center"><Phone className="w-5 h-5 text-yellow-400" /></div>
-                <div><p className="text-sm font-semibold">Availability</p><p className="text-xs text-[var(--muted)]">Mon–Sat, 9 AM – 9 PM PKT</p></div>
-              </div>
             </div>
           </motion.div>
 

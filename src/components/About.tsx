@@ -6,10 +6,10 @@ import AnimatedCounter from './AnimatedCounter';
 import { Code2, Briefcase, Users, Calendar } from 'lucide-react';
 
 const stats = [
-  { end: 30, suffix: '+', label: 'Projects Completed', icon: Code2 },
-  { end: 20, suffix: '+', label: 'Technologies Known', icon: Briefcase },
-  { end: 15, suffix: '+', label: 'Happy Clients', icon: Users },
-  { end: 3, suffix: '+', label: 'Years Experience', icon: Calendar },
+  { end: 8, suffix: '+', label: 'Projects Completed', icon: Code2 },
+  { end: 14, suffix: '+', label: 'Technologies Known', icon: Briefcase },
+  { end: 6, suffix: '+', label: 'Happy Clients', icon: Users },
+  { end: 3, suffix: 'rd Year', label: 'Software Engineering', icon: Calendar },
 ];
 
 export default function About() {
