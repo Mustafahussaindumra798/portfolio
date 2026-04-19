@@ -135,12 +135,21 @@ export default function Skills() {
                     className="group relative flex flex-col items-center justify-center p-6 rounded-2xl glass border border-transparent hover:border-primary/20 transition-all duration-300 cursor-default"
                   >
                     <div 
-                      className="text-4xl mb-3 transition-transform duration-300 group-hover:scale-110"
-                      style={{ color: skill.color }}
+                      className="relative w-16 h-16 mb-4 flex items-center justify-center rounded-2xl bg-white/5 group-hover:bg-white/10 transition-colors duration-500 shadow-inner"
                     >
-                      {skill.icon}
+                      <div 
+                        className="text-4xl transition-transform duration-500 group-hover:scale-110 relative z-10"
+                        style={{ color: skill.color }}
+                      >
+                        {skill.icon}
+                      </div>
+                      {/* Glow effect */}
+                      <div 
+                        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"
+                        style={{ backgroundColor: skill.color }}
+                      />
                     </div>
-                    <span className="text-sm font-semibold text-foreground/70 group-hover:text-foreground transition-colors">
+                    <span className="text-sm font-bold text-foreground/70 group-hover:text-foreground transition-colors tracking-tight">
                       {skill.name}
                     </span>
                     

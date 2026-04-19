@@ -72,40 +72,43 @@ export default function Services() {
           description="Professional solutions tailored to bring your digital vision to life."
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              viewport={{ once: true, margin: '-30px' }}
-              whileHover={{ y: -8 }}
-              className={`group relative rounded-2xl glass overflow-hidden transition-all duration-300 ${service.borderColor} hover:shadow-[0_0_40px_rgba(0,212,255,0.06)]`}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              viewport={{ once: true, margin: '-50px' }}
+              whileHover={{ y: -12 }}
+              className={`group relative rounded-[32px] glass p-8 overflow-hidden transition-all duration-500 ${service.borderColor} hover:shadow-[0_20px_50px_rgba(0,212,255,0.12)] border border-primary/5`}
             >
               {/* Gradient background */}
               <div
-                className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700`}
               />
 
-              <div className="relative p-7">
+              <div className="relative z-10">
                 {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors duration-300">
-                  <service.icon className="w-6 h-6 text-primary" />
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/5 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-inner">
+                  <service.icon className="w-8 h-8 text-primary" />
                 </div>
 
                 {/* Title */}
-                <h3 className="font-syne text-lg font-bold mb-3 group-hover:text-primary transition-colors">
+                <h3 className="font-syne text-xl font-bold mb-4 group-hover:text-primary transition-colors">
                   {service.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-[var(--muted)] text-sm leading-relaxed">
+                <p className="text-[var(--muted)] text-sm leading-relaxed mb-6">
                   {service.description}
                 </p>
 
-                {/* Bottom accent line */}
-                <div className="mt-5 h-px w-0 group-hover:w-full bg-gradient-to-r from-primary/50 to-transparent transition-all duration-500" />
+                {/* Learn More link */}
+                <div className="flex items-center gap-2 text-primary font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                  <span>Explore Service</span>
+                  <div className="w-8 h-px bg-primary" />
+                </div>
               </div>
             </motion.div>
           ))}

@@ -26,69 +26,99 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-[var(--card-border)]">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-16">
-        <div className="grid md:grid-cols-3 gap-10 mb-10">
-          {/* Brand */}
-          <div>
-            <a href="#home" className="inline-block mb-4">
-              <span className="font-syne text-2xl font-bold">
-                <span className="text-primary">M</span>H
-              </span>
-            </a>
-            <p className="text-[var(--muted)] text-sm leading-relaxed max-w-xs">
-              Building modern web experiences with clean code and creative design.
-              Let&apos;s create something extraordinary together.
+    <footer className="relative mt-20 border-t border-primary/10 overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-16">
+        <div className="grid md:grid-cols-4 gap-12 lg:gap-20">
+          {/* Brand Column */}
+          <div className="md:col-span-2">
+            <motion.a 
+              href="#home" 
+              onClick={(e) => { e.preventDefault(); handleClick('#home'); }}
+              className="inline-flex items-center gap-2 mb-6 group"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-accent p-[1px]">
+                <div className="w-full h-full rounded-[15px] bg-[var(--background)] flex items-center justify-center">
+                  <span className="font-syne text-2xl font-bold text-gradient">M</span>
+                </div>
+              </div>
+              <span className="font-syne text-2xl font-bold tracking-tighter">Hussain</span>
+            </motion.a>
+            <p className="text-[var(--muted)] text-base leading-relaxed max-w-sm mb-8">
+              Crafting intelligent digital experiences at the intersection of design and technology. 
+              Specializing in AI-integrated web solutions.
             </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-syne font-semibold mb-4">Quick Links</h4>
-            <div className="grid grid-cols-2 gap-2">
-              {footerLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); handleClick(link.href); }}
-                  className="text-sm text-[var(--muted)] hover:text-primary transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Social */}
-          <div>
-            <h4 className="font-syne font-semibold mb-4">Connect</h4>
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-10 h-10 rounded-xl glass flex items-center justify-center text-[var(--muted)] hover:text-primary hover:border-primary/30 transition-all"
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  className="w-12 h-12 rounded-2xl glass flex items-center justify-center text-[var(--muted)] hover:text-primary hover:border-primary/40 transition-all duration-300"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-4 h-4" />
+                  <social.icon className="w-5 h-5" />
                 </motion.a>
               ))}
             </div>
           </div>
+
+          {/* Navigation */}
+          <div>
+            <h4 className="font-syne text-lg font-bold mb-8 relative">
+              Navigation
+              <span className="absolute -bottom-2 left-0 w-8 h-1 bg-primary rounded-full" />
+            </h4>
+            <ul className="space-y-4">
+              {footerLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    onClick={(e) => { e.preventDefault(); handleClick(link.href); }}
+                    className="group flex items-center gap-2 text-[var(--muted)] hover:text-primary transition-colors duration-300"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/20 group-hover:bg-primary transition-colors" />
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="font-syne text-lg font-bold mb-8 relative">
+              Contact
+              <span className="absolute -bottom-2 left-0 w-8 h-1 bg-primary rounded-full" />
+            </h4>
+            <ul className="space-y-6">
+              <li>
+                <p className="text-xs font-mono text-primary uppercase tracking-widest mb-1">Email</p>
+                <a href="mailto:mustafahussaindumra798@gmail.com" className="text-[var(--muted)] hover:text-primary transition-colors">
+                  mustafahussaindumra798@gmail.com
+                </a>
+              </li>
+              <li>
+                <p className="text-xs font-mono text-primary uppercase tracking-widest mb-1">Location</p>
+                <p className="text-[var(--muted)]">Pakistan</p>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-[var(--card-border)] mb-6" />
-
-        {/* Copyright */}
-        <div className="text-center">
-          <p className="text-sm text-[var(--muted)]">
-            © {new Date().getFullYear()} Mustafa Hussain. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="mt-20 pt-8 border-t border-primary/5 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-sm text-[var(--muted)] font-medium">
+            © {new Date().getFullYear()} Mustafa Hussain. Designed with <Heart className="inline-block w-4 h-4 text-red-500 animate-pulse" /> for the web.
           </p>
+          <div className="flex gap-8 text-sm text-[var(--muted)]">
+            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+          </div>
         </div>
       </div>
     </footer>

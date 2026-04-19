@@ -58,26 +58,26 @@ export default function Contact() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
-                  <input type="text" id="name" name="name" value={form.name} onChange={handleChange} required placeholder="John Doe" className={inputClass} />
+            <form onSubmit={handleSubmit} className="space-y-6 glass p-8 rounded-3xl border border-primary/10">
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-xs font-mono text-primary uppercase tracking-widest px-1">Name</label>
+                  <input type="text" id="name" name="name" value={form.name} onChange={handleChange} required placeholder="Mustafa Hussain" className={inputClass} />
                 </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
-                  <input type="email" id="email" name="email" value={form.email} onChange={handleChange} required placeholder="john@example.com" className={inputClass} />
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-xs font-mono text-primary uppercase tracking-widest px-1">Email</label>
+                  <input type="email" id="email" name="email" value={form.email} onChange={handleChange} required placeholder="hello@mustafa.me" className={inputClass} />
                 </div>
               </div>
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">Subject</label>
-                <input type="text" id="subject" name="subject" value={form.subject} onChange={handleChange} required placeholder="Project Discussion" className={inputClass} />
+              <div className="space-y-2">
+                <label htmlFor="subject" className="text-xs font-mono text-primary uppercase tracking-widest px-1">Subject</label>
+                <input type="text" id="subject" name="subject" value={form.subject} onChange={handleChange} required placeholder="Let's build something amazing" className={inputClass} />
               </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
-                <textarea id="message" name="message" value={form.message} onChange={handleChange} required rows={5} placeholder="Tell me about your project..." className={`${inputClass} resize-none`} />
+              <div className="space-y-2">
+                <label htmlFor="message" className="text-xs font-mono text-primary uppercase tracking-widest px-1">Message</label>
+                <textarea id="message" name="message" value={form.message} onChange={handleChange} required rows={5} placeholder="Hi Mustafa, I have a project idea..." className={`${inputClass} resize-none`} />
               </div>
-              <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} type="submit" disabled={status === 'sending'} className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-primary to-cyan-400 text-dark-900 font-semibold text-sm hover:shadow-[0_0_30px_rgba(0,212,255,0.3)] transition-all disabled:opacity-70">
+              <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} type="submit" disabled={status === 'sending'} className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-accent text-white font-bold text-sm shadow-[0_10px_20px_-10px_rgba(14,165,233,0.5)] hover:shadow-[0_20px_40px_-10px_rgba(14,165,233,0.6)] transition-all duration-300 disabled:opacity-70">
                 {status === 'idle' && <><Send className="w-4 h-4" />Send Message</>}
                 {status === 'sending' && <><Loader2 className="w-4 h-4 animate-spin" />Sending...</>}
                 {status === 'sent' && <><CheckCircle className="w-4 h-4" />Message Sent!</>}

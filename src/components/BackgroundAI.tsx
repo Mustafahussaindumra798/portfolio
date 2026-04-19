@@ -24,16 +24,16 @@ export default function BackgroundAI() {
     }
 
     const points: Point[] = [];
-    const count = Math.min(Math.floor((width * height) / 15000), 80);
-    const labels = ['AI', 'DATA', 'NEURAL', 'LOGIC', 'MUSTAFA', '01', 'CORE'];
+    const count = Math.min(Math.floor((width * height) / 12000), 100);
+    const labels = ['AI', 'INTELLIGENCE', 'NEURAL', 'LOGIC', 'MUSTAFA', '0101', 'CORE', 'BRAIN'];
 
     for (let i = 0; i < count; i++) {
       points.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        size: Math.random() * 2 + 1,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
+        size: Math.random() * 3 + 1,
         pulse: Math.random(),
         pulseDir: 0.01 + Math.random() * 0.02,
         label: Math.random() > 0.9 ? labels[Math.floor(Math.random() * labels.length)] : undefined,
@@ -55,6 +55,7 @@ export default function BackgroundAI() {
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
 
+      // Draw glowing background glow nodes
       points.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
@@ -69,22 +70,28 @@ export default function BackgroundAI() {
         const dx = mouseX - p.x;
         const dy = mouseY - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 200) {
-          const force = (200 - dist) / 200;
-          p.x -= (dx / dist) * force * 1.5;
-          p.y -= (dy / dist) * force * 1.5;
+        if (dist < 250) {
+          const force = (250 - dist) / 250;
+          p.x -= (dx / dist) * force * 2;
+          p.y -= (dy / dist) * force * 2;
         }
 
-        const alpha = 0.1 + p.pulse * 0.3;
+        const alpha = 0.15 + p.pulse * 0.4;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * (1 + p.pulse * 0.5), 0, Math.PI * 2);
-        ctx.fillStyle = `${primaryColor} ${alpha})`;
+        ctx.arc(p.x, p.y, p.size * (1.5 + p.pulse), 0, Math.PI * 2);
+        ctx.fillStyle = `${primaryColor} ${alpha * 0.6})`;
         ctx.fill();
 
         if (p.label) {
-          ctx.font = '600 10px Inter';
-          ctx.fillStyle = `${primaryColor} ${alpha + 0.2})`;
-          ctx.fillText(p.label, p.x + 8, p.y + 4);
+          ctx.font = 'bold 12px font-syne';
+          ctx.fillStyle = `${primaryColor} ${alpha + 0.3})`;
+          ctx.fillText(p.label, p.x + 12, p.y + 6);
+          
+          // Outer glow for labeled nodes
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+          ctx.fillStyle = `${primaryColor} 0.05)`;
+          ctx.fill();
         }
       });
 
@@ -95,22 +102,23 @@ export default function BackgroundAI() {
           const dy = points[i].y - points[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 150) {
-            const alpha = (1 - dist / 150) * 0.15;
+          if (dist < 180) {
+            const alpha = (1 - dist / 180) * 0.25;
             ctx.beginPath();
             ctx.moveTo(points[i].x, points[i].y);
             ctx.lineTo(points[j].x, points[j].y);
-            ctx.strokeStyle = i % 2 === 0 ? `${primaryColor} ${alpha})` : `${accentColor} ${alpha})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = i % 3 === 0 ? `${accentColor} ${alpha})` : `${primaryColor} ${alpha})`;
+            ctx.lineWidth = 0.8;
             ctx.stroke();
 
-            // Data flow animation
-            if (dist < 80 && Math.random() > 0.98) {
-              const flowX = points[i].x + (points[j].x - points[i].x) * Math.random();
-              const flowY = points[i].y + (points[j].y - points[i].y) * Math.random();
+            // Animated pulses on lines
+            if (dist < 100 && Math.random() > 0.97) {
+              const pos = (Date.now() % 2000) / 2000;
+              const px = points[i].x + (points[j].x - points[i].x) * pos;
+              const py = points[i].y + (points[j].y - points[i].y) * pos;
               ctx.beginPath();
-              ctx.arc(flowX, flowY, 1, 0, Math.PI * 2);
-              ctx.fillStyle = isDark ? '#fff' : '#0ea5e9';
+              ctx.arc(px, py, 2, 0, Math.PI * 2);
+              ctx.fillStyle = isDark ? '#fff' : `${primaryColor} 1)`;
               ctx.fill();
             }
           }

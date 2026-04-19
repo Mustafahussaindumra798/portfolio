@@ -5,16 +5,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --background: #ffffff;
+  --background: #f1f5f9;
   --foreground: #0f172a;
   --primary: #0ea5e9;
   --primary-glow: rgba(14, 165, 233, 0.15);
   --accent: #6366f1;
   --accent-glow: rgba(99, 102, 241, 0.15);
-  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-bg: rgba(255, 255, 255, 0.9);
   --card-border: rgba(0, 0, 0, 0.05);
   --muted: #64748b;
-  --section-bg: #f8fafc;
+  --section-bg: #e2e8f0;
 }
 
 .dark {

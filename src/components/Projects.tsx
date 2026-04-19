@@ -91,83 +91,71 @@ export default function Projects() {
           description="A showcase of projects that demonstrate my skills and passion for building great software."
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              viewport={{ once: true, margin: '-50px' }}
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="group relative"
+              className="group relative h-full"
             >
               <div
-                className={`relative h-full rounded-2xl glass overflow-hidden transition-all duration-500 hover:border-primary/20 hover:shadow-[0_0_40px_rgba(0,212,255,0.08)] ${
-                  hoveredIndex === i ? 'scale-[1.02]' : ''
+                className={`relative h-full rounded-[32px] glass overflow-hidden border border-primary/5 transition-all duration-500 ${
+                  hoveredIndex === i ? 'border-primary/30 shadow-[0_30px_60px_-15px_rgba(14,165,233,0.15)] -translate-y-2' : ''
                 }`}
               >
-                {/* Top gradient bar */}
-                <div
-                  className={`h-1 w-full bg-gradient-to-r ${project.gradient.replace('/10', '/60')}`}
-                />
-
-                <div className="p-6">
-                  {/* Header */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <span className="text-3xl">{project.emoji}</span>
-                      <h3 className="font-syne text-xl font-bold group-hover:text-primary transition-colors">
-                        {project.title}
-                      </h3>
-                    </div>
+                {/* Decorative background glow */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
+                
+                <div className="relative p-8">
+                  {/* Emoji / Icon Circle */}
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-white/10 to-transparent flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform duration-500 shadow-xl border border-white/5">
+                    {project.emoji}
                   </div>
 
-                  {/* Description */}
-                  <p className="text-[var(--muted)] text-sm leading-relaxed mb-5">
+                  <h3 className="font-syne text-2xl font-bold mb-4 group-hover:text-primary transition-colors tracking-tight">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-[var(--muted)] text-sm leading-relaxed mb-8 h-[72px] overflow-hidden">
                     {project.description}
                   </p>
 
-                  {/* Tech Stack Tags */}
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2 mb-8">
                     {project.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2.5 py-1 rounded-md text-xs font-mono bg-primary/5 text-primary/80 border border-primary/10"
+                        className="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-primary/5 text-primary border border-primary/10 tracking-wider uppercase"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex gap-3">
+                  <div className="flex items-center gap-4 pt-4 border-t border-primary/5">
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-primary/10 text-primary hover:bg-primary/20 transition-all duration-200"
+                      className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20"
                     >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      Live Demo
+                      <ExternalLink className="w-4 h-4" />
+                      Live Preview
                     </a>
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold border border-[var(--card-border)] hover:border-primary/30 text-[var(--muted)] hover:text-primary transition-all duration-200"
+                      className="p-3 rounded-xl border border-primary/20 hover:border-primary/40 text-primary hover:bg-primary/5 transition-all"
                     >
-                      <Github className="w-3.5 h-3.5" />
-                      GitHub
+                      <Github className="w-5 h-5" />
                     </a>
                   </div>
                 </div>
-
-                {/* Hover background glow */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
-                />
               </div>
             </motion.div>
           ))}
