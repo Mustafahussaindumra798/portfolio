@@ -20,9 +20,9 @@ import {
   SiWordpress,
   SiGit,
   SiGithub,
-  SiVisualstudiocode,
+
 } from 'react-icons/si';
-import { Bot, Globe } from 'lucide-react';
+import { Bot, Globe, Code2 } from 'lucide-react';
 import { FaJava } from 'react-icons/fa';
 
 interface Skill {
@@ -77,7 +77,7 @@ const skillGroups: SkillGroup[] = [
       { name: 'WordPress', icon: <SiWordpress className="w-5 h-5" /> },
       { name: 'Git', icon: <SiGit className="w-5 h-5" /> },
       { name: 'GitHub', icon: <SiGithub className="w-5 h-5" /> },
-      { name: 'VS Code', icon: <SiVisualstudiocode className="w-5 h-5" /> },
+      { name: 'VS Code', icon: <Code2 className="w-5 h-5" /> },
     ],
   },
   {
