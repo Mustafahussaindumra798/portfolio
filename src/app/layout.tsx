@@ -4,6 +4,8 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import AIChatbot from '@/components/AIChatbot';
+import BackgroundAI from '@/components/BackgroundAI';
 
 export const metadata: Metadata = {
   title: 'Mustafa Hussain | Software Engineer & Full Stack Developer',
@@ -66,10 +68,16 @@ export default function RootLayout({
       </head>
       <body className="font-inter antialiased">
         <ThemeProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <div className="relative min-h-screen selection:bg-primary/30 selection:text-primary-foreground">
+            <BackgroundAI />
+            <div className="relative z-10">
+              <Navbar />
+              <main>{children}</main>
+              <Footer />
+            </div>
+          </div>
           <WhatsAppButton />
+          <AIChatbot />
         </ThemeProvider>
       </body>
     </html>

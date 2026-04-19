@@ -13,12 +13,10 @@ const roles = [
 ];
 
 export default function Hero() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [displayText, setDisplayText] = useState('');
-  const { theme } = useTheme();
 
   // Typewriter effect
   useEffect(() => {
@@ -50,171 +48,15 @@ export default function Hero() {
     return () => clearTimeout(timeout);
   }, [charIndex, isDeleting, roleIndex]);
 
-  // Particle network canvas
-  const drawParticles = useCallback(
-    (ctx: CanvasRenderingContext2D, width: number, height: number) => {
-      const isDark = theme === 'dark';
-      const particleColor = isDark ? 'rgba(0, 212, 255,' : 'rgba(0, 150, 200,';
-      const lineColor = isDark ? 'rgba(0, 212, 255,' : 'rgba(0, 150, 200,';
-
-      interface Particle {
-        x: number;
-        y: number;
-        vx: number;
-        vy: number;
-        size: number;
-      }
-
-      const particles: Particle[] = [];
-      const count = Math.min(Math.floor((width * height) / 12000), 100);
-
-      for (let i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          size: Math.random() * 2 + 0.5,
-        });
-      }
-
-      let mouseX = -1000;
-      let mouseY = -1000;
-
-      const handleMouseMove = (e: MouseEvent) => {
-        const rect = ctx.canvas.getBoundingClientRect();
-        mouseX = e.clientX - rect.left;
-        mouseY = e.clientY - rect.top;
-      };
-
-      const handleMouseLeave = () => {
-        mouseX = -1000;
-        mouseY = -1000;
-      };
-
-      ctx.canvas.addEventListener('mousemove', handleMouseMove);
-      ctx.canvas.addEventListener('mouseleave', handleMouseLeave);
-
-      let animId: number;
-
-      const animate = () => {
-        ctx.clearRect(0, 0, width, height);
-
-        particles.forEach((p) => {
-          p.x += p.vx;
-          p.y += p.vy;
-
-          if (p.x < 0 || p.x > width) p.vx *= -1;
-          if (p.y < 0 || p.y > height) p.vy *= -1;
-
-          // Mouse interaction
-          const dx = mouseX - p.x;
-          const dy = mouseY - p.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 150) {
-            const force = (150 - dist) / 150;
-            p.vx -= (dx / dist) * force * 0.02;
-            p.vy -= (dy / dist) * force * 0.02;
-          }
-
-          // Damping
-          p.vx *= 0.999;
-          p.vy *= 0.999;
-
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = `${particleColor} 0.6)`;
-          ctx.fill();
-        });
-
-        // Draw connections
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance < 120) {
-              ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = `${lineColor} ${0.15 * (1 - distance / 120)})`;
-              ctx.lineWidth = 0.5;
-              ctx.stroke();
-            }
-          }
-        }
-
-        // Draw mouse connections
-        if (mouseX > 0 && mouseY > 0) {
-          particles.forEach((p) => {
-            const dx = mouseX - p.x;
-            const dy = mouseY - p.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 200) {
-              ctx.beginPath();
-              ctx.moveTo(p.x, p.y);
-              ctx.lineTo(mouseX, mouseY);
-              ctx.strokeStyle = `${lineColor} ${0.2 * (1 - dist / 200)})`;
-              ctx.lineWidth = 0.8;
-              ctx.stroke();
-            }
-          });
-        }
-
-        animId = requestAnimationFrame(animate);
-      };
-
-      animate();
-
-      return () => {
-        cancelAnimationFrame(animId);
-        ctx.canvas.removeEventListener('mousemove', handleMouseMove);
-        ctx.canvas.removeEventListener('mouseleave', handleMouseLeave);
-      };
-    },
-    [theme]
-  );
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    resize();
-    window.addEventListener('resize', resize);
-
-    const cleanup = drawParticles(ctx, canvas.width, canvas.height);
-
-    return () => {
-      cleanup();
-      window.removeEventListener('resize', resize);
-    };
-  }, [drawParticles]);
-
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Particle Canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-0"
-        style={{ pointerEvents: 'auto' }}
-      />
-
-      {/* Gradient Overlays */}
-      <div className="absolute inset-0 z-[1]">
-        <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px]" />
-        <div className="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] rounded-full bg-accent/5 blur-[120px]" />
+      {/* Subtle Gradient Overlays */}
+      <div className="absolute inset-0 z-[1] pointer-events-none">
+        <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[120px] animate-pulse" />
+        <div className="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
       {/* Content */}
@@ -264,8 +106,9 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-[var(--muted)] text-base md:text-lg max-w-xl leading-relaxed mb-8"
             >
-              BSc Software Engineering student passionate about building smart web
-              experiences. I turn complex problems into elegant, user-friendly solutions.
+              BSc Software Engineering student with 1 year of experience passionate about building 
+              intelligent AI solutions and smart web experiences. I turn complex problems into elegant, 
+              scalable solutions.
             </motion.p>
 
             <motion.div

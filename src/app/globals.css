@@ -6,28 +6,28 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0a0a0f;
-  --primary: #00d4ff;
-  --primary-glow: rgba(0, 212, 255, 0.15);
-  --accent: #7c3aed;
-  --accent-glow: rgba(124, 58, 237, 0.15);
+  --foreground: #0f172a;
+  --primary: #0ea5e9;
+  --primary-glow: rgba(14, 165, 233, 0.15);
+  --accent: #6366f1;
+  --accent-glow: rgba(99, 102, 241, 0.15);
   --card-bg: rgba(255, 255, 255, 0.8);
-  --card-border: rgba(0, 0, 0, 0.08);
-  --muted: #6b7280;
-  --section-bg: #f8f9fa;
+  --card-border: rgba(0, 0, 0, 0.05);
+  --muted: #64748b;
+  --section-bg: #f8fafc;
 }
 
 .dark {
-  --background: #0a0a0f;
-  --foreground: #e8e8ea;
-  --primary: #00d4ff;
-  --primary-glow: rgba(0, 212, 255, 0.1);
-  --accent: #7c3aed;
-  --accent-glow: rgba(124, 58, 237, 0.1);
-  --card-bg: rgba(30, 30, 46, 0.6);
-  --card-border: rgba(255, 255, 255, 0.05);
-  --muted: #9f9fa6;
-  --section-bg: #101018;
+  --background: #020617;
+  --foreground: #f1f5f9;
+  --primary: #38bdf8;
+  --primary-glow: rgba(56, 189, 248, 0.1);
+  --accent: #818cf8;
+  --accent-glow: rgba(129, 140, 248, 0.1);
+  --card-bg: rgba(15, 23, 42, 0.6);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --muted: #94a3b8;
+  --section-bg: #0b1120;
 }
 
 * {
@@ -154,6 +154,14 @@ body {
 
   .bg-noise {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+  }
+
+  .bg-ai-grid {
+    background-size: 50px 50px;
+    background-image: 
+      linear-gradient(to right, var(--primary-glow) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--primary-glow) 1px, transparent 1px);
+    mask-image: radial-gradient(ellipse at center, black, transparent 80%);
   }
 
   .section-padding {

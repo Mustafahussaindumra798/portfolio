@@ -9,7 +9,7 @@ const stats = [
   { end: 8, suffix: '+', label: 'Projects Completed', icon: Code2 },
   { end: 14, suffix: '+', label: 'Technologies Known', icon: Briefcase },
   { end: 6, suffix: '+', label: 'Happy Clients', icon: Users },
-  { end: 3, suffix: 'rd Year', label: 'Software Engineering', icon: Calendar },
+  { end: 1, suffix: '+ Year', label: 'Experience', icon: Calendar },
 ];
 
 export default function About() {
@@ -34,7 +34,7 @@ export default function About() {
             <div className="space-y-5">
               <p className="text-[var(--muted)] text-base md:text-lg leading-relaxed">
                 I&apos;m <span className="text-primary font-semibold">Mustafa Hussain</span>, a
-                BSc Software Engineering student with a deep passion for building
+                BSc Software Engineering student with 1 year of professional experience in building
                 innovative web solutions. I specialize in full-stack development using
                 modern technologies like <span className="text-primary">React</span>,{' '}
                 <span className="text-primary">Next.js</span>, and{' '}
