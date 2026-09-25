@@ -1,117 +1,121 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowDown, Eye } from 'lucide-react';
+import { ArrowRight, Code2, Database, Terminal } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Hero() {
+  const handleScroll = (href: string) => {
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--background)] pt-20"
-    >
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-24 w-full">
-        <div className="grid lg:grid-cols-[1fr,0.8fr] gap-12 items-center">
-          {/* Left Column */}
-          <div>
+    <section id="home" className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden bg-background">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 w-full">
+        <div className="grid lg:grid-cols-[1.1fr,0.9fr] gap-16 items-center">
+          
+          {/* LEFT: Typography & CTAs */}
+          <div className="relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="inline-block text-xs md:text-sm font-semibold tracking-widest text-[var(--primary)] uppercase mb-6">
-                Web Developer &bull; Full-Stack Developer
+              <span className="inline-block text-xs font-mono font-medium tracking-[0.2em] text-muted uppercase mb-8 border border-gray-200 px-3 py-1 rounded-full">
+                Software Engineer &middot; Full-Stack Developer &middot; AI/ML
               </span>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-syne text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] text-[var(--foreground)] mb-6 tracking-tight"
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="font-syne text-[2.75rem] leading-[1.1] md:text-6xl lg:text-[4.5rem] font-bold text-foreground mb-6 tracking-tight"
             >
-              Building Modern Digital Experiences That Move Businesses Forward.
+              Building Software That Turns Ideas Into Real Products.
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-[var(--muted)] text-base md:text-lg max-w-xl leading-relaxed mb-10"
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="text-muted text-lg md:text-xl max-w-xl leading-relaxed mb-10 font-inter font-light"
             >
-              I am Mustafa Hussain. I design and develop modern, responsive web applications focused on performance, usability, and real business goals. Specialized in Python development and intelligent technologies.
+              I am Mustafa Hussain. I design, architect, and develop modern web applications, full-stack systems, and intelligent AI-driven software for real business needs.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap gap-4"
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col sm:flex-row gap-4"
             >
-              <a
-                href="#projects"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="group inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[var(--primary)] text-white font-medium text-sm hover:bg-[var(--primary)]/90 transition-all duration-300 shadow-sm hover:shadow-md"
+              <button
+                onClick={() => handleScroll('#work')}
+                className="group flex items-center justify-center gap-2 px-8 py-4 bg-foreground text-background text-sm font-semibold hover:bg-primary transition-colors duration-300"
               >
-                <Eye className="w-4 h-4" />
-                View My Work
-              </a>
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="group inline-flex items-center gap-2 px-6 py-3 rounded-md border border-[var(--card-border)] bg-[var(--background)] text-[var(--foreground)] font-medium text-sm hover:bg-[var(--section-bg)] transition-all duration-300"
+                View Selected Work
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button
+                onClick={() => handleScroll('#contact')}
+                className="flex items-center justify-center px-8 py-4 bg-background border border-gray-200 text-foreground text-sm font-semibold hover:border-foreground hover:bg-gray-50 transition-all duration-300"
               >
                 Let&apos;s Talk
-              </a>
+              </button>
             </motion.div>
           </div>
 
-          {/* Right Column — Professional Visual */}
+          {/* RIGHT: Professional Composition */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:flex justify-end items-center relative"
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:block relative h-[600px] w-full"
           >
-            <div className="relative w-full max-w-md aspect-square rounded-2xl overflow-hidden bg-[var(--section-bg)] border border-[var(--card-border)] shadow-sm flex items-center justify-center group hover:border-[var(--primary)]/30 transition-colors duration-500">
-              {/* Minimalist abstract representation of UI/Code */}
-              <div className="w-3/4 h-3/4 flex flex-col gap-4 opacity-40 group-hover:opacity-60 transition-opacity duration-500">
-                 <div className="w-full h-6 bg-[var(--card-border)] rounded-md"></div>
-                 <div className="w-2/3 h-6 bg-[var(--card-border)] rounded-md"></div>
-                 <div className="w-full h-32 bg-[var(--card-border)] rounded-md mt-4"></div>
-                 <div className="flex gap-4 mt-2">
-                   <div className="w-1/2 h-24 bg-[var(--card-border)] rounded-md"></div>
-                   <div className="w-1/2 h-24 bg-[var(--card-border)] rounded-md"></div>
-                 </div>
+            {/* Main Visual Frame */}
+            <div className="absolute inset-0 bg-section-bg border border-card-border overflow-hidden flex flex-col shadow-sm">
+              {/* Fake Browser Header */}
+              <div className="h-10 bg-white border-b border-card-border flex items-center px-4 gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-gray-200" />
+                <div className="w-2.5 h-2.5 rounded-full bg-gray-200" />
+                <div className="w-2.5 h-2.5 rounded-full bg-gray-200" />
+              </div>
+              {/* Content Area */}
+              <div className="flex-1 relative p-8 flex flex-col justify-between">
+                
+                {/* Abstract Code/Tech representation */}
+                <div className="space-y-4 opacity-30">
+                  <div className="w-3/4 h-8 bg-gray-200" />
+                  <div className="w-1/2 h-4 bg-gray-200" />
+                  <div className="w-full h-32 bg-gray-200 mt-8" />
+                </div>
+
+                {/* Tech Labels */}
+                <div className="absolute bottom-8 right-8 flex flex-col gap-3">
+                  <div className="flex items-center gap-3 bg-white px-4 py-2 border border-gray-100 shadow-sm">
+                    <Terminal className="w-4 h-4 text-primary" />
+                    <span className="text-xs font-mono font-medium text-foreground">Backend Architecture</span>
+                  </div>
+                  <div className="flex items-center gap-3 bg-white px-4 py-2 border border-gray-100 shadow-sm translate-x-4">
+                    <Code2 className="w-4 h-4 text-primary" />
+                    <span className="text-xs font-mono font-medium text-foreground">Frontend Engineering</span>
+                  </div>
+                  <div className="flex items-center gap-3 bg-white px-4 py-2 border border-gray-100 shadow-sm">
+                    <Database className="w-4 h-4 text-primary" />
+                    <span className="text-xs font-mono font-medium text-foreground">Machine Learning</span>
+                  </div>
+                </div>
+
               </div>
             </div>
+            
+            {/* Subtle decorative grid behind the visual */}
+            <div className="absolute -inset-4 -z-10 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:block"
-      >
-        <motion.div
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="flex flex-col items-center gap-2 text-[var(--muted)] hover:text-[var(--primary)] transition-colors cursor-pointer"
-          onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
-        >
-          <span className="font-mono text-[10px] tracking-widest uppercase">Scroll</span>
-          <ArrowDown className="w-4 h-4" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

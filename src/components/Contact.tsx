@@ -1,89 +1,139 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import SectionHeader from './SectionHeader';
-import { Send, Mail, MapPin, MessageCircle, Phone, Loader2, CheckCircle, Github, Linkedin } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
-
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: MessageCircle, href: 'https://wa.me/923400488902', label: 'WhatsApp' },
-    { icon: Mail, href: 'mailto:mustafahussaindumra798@gmail.com', label: 'Email' },
-  ];
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('sending');
-    const mailto = `mailto:mustafahussaindumra798@gmail.com?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)}`;
-    window.open(mailto, '_blank');
-    setTimeout(() => {
-      setStatus('sent');
-      setForm({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setStatus('idle'), 3000);
-    }, 800);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const inputClass = "w-full px-4 py-3 rounded-xl glass text-sm bg-transparent border border-[var(--card-border)] focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/20 transition-all placeholder:text-[var(--muted)]/50";
-
   return (
-    <section id="contact" className="section-padding relative">
-      <div className="absolute inset-0 bg-[var(--section-bg)]/50" />
-      <div className="relative max-w-7xl mx-auto">
-        <SectionHeader subtitle="// Get In Touch" title="Let's Work Together" description="Have a project in mind? Let's discuss how I can help bring your ideas to life." />
-        <div className="grid lg:grid-cols-[0.8fr,1fr] gap-12 lg:gap-16">
-          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="space-y-6">
-            <div>
-              <h3 className="font-syne text-2xl font-bold mb-2">Let&apos;s build something amazing</h3>
-              <p className="text-[var(--muted)] text-sm leading-relaxed">Whether you need a website, an AI chatbot, or a custom web application, I&apos;m here to help.</p>
+    <section id="contact" className="py-24 md:py-32 bg-white border-y border-gray-100">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+        
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+          
+          {/* Left: Typography & Links */}
+          <div>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="font-mono text-sm font-medium text-primary">09</span>
+              <div className="h-px w-12 bg-primary/20" />
+              <h2 className="font-syne text-xl md:text-2xl font-bold tracking-tight text-foreground uppercase">Contact</h2>
             </div>
-            <div className="space-y-4">
-              <motion.a whileHover={{ x: 5 }} href="https://wa.me/923400488902" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 p-4 rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] hover:border-green-500 transition-all shadow-sm">
-                <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center"><MessageCircle className="w-5 h-5 text-green-500" /></div>
-                <div><p className="text-sm font-semibold">WhatsApp</p><p className="text-xs text-[var(--muted)]">Quick response via WhatsApp</p></div>
-              </motion.a>
-              <a href="mailto:mustafahussaindumra798@gmail.com" className="group flex items-center gap-4 p-4 rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] hover:border-[var(--primary)] transition-all shadow-sm">
-                <div className="w-10 h-10 rounded-lg bg-[var(--primary)]/10 flex items-center justify-center"><Mail className="w-5 h-5 text-[var(--primary)]" /></div>
-                <div><p className="text-sm font-semibold">Email</p><p className="text-xs text-[var(--muted)]">mustafahussaindumra798@gmail.com</p></div>
-              </a>
-            </div>
-          </motion.div>
+            
+            <motion.h3 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="font-syne text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight"
+            >
+              Have an idea worth building?
+            </motion.h3>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-muted text-lg leading-relaxed font-inter font-light mb-12 max-w-md"
+            >
+              I am currently open to new opportunities, consulting engagements, and technical collaborations. Let&apos;s build something exceptional.
+            </motion.p>
 
-          <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <form onSubmit={handleSubmit} className="space-y-6 bg-[var(--card-bg)] p-8 rounded-xl border border-[var(--card-border)] shadow-sm">
-              <div className="grid sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-xs font-mono text-[var(--primary)] uppercase tracking-widest px-1 font-semibold">Name</label>
-                  <input type="text" id="name" name="name" value={form.name} onChange={handleChange} required placeholder="Mustafa Hussain" className={inputClass} />
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col gap-6"
+            >
+              <div>
+                <p className="text-xs font-mono font-semibold text-primary uppercase tracking-widest mb-2">Email</p>
+                <a href="mailto:mustafahussaindumra798@gmail.com" className="font-syne text-xl md:text-2xl font-bold text-foreground hover:text-primary transition-colors">
+                  mustafahussaindumra798@gmail.com
+                </a>
+              </div>
+              <div className="grid grid-cols-2 gap-8 mt-4">
+                <div>
+                  <p className="text-xs font-mono font-semibold text-primary uppercase tracking-widest mb-2">Social</p>
+                  <div className="flex flex-col gap-2">
+                    <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-muted hover:text-foreground font-medium transition-colors">LinkedIn</a>
+                    <a href="https://github.com" target="_blank" rel="noreferrer" className="text-muted hover:text-foreground font-medium transition-colors">GitHub</a>
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-xs font-mono text-[var(--primary)] uppercase tracking-widest px-1 font-semibold">Email</label>
-                  <input type="email" id="email" name="email" value={form.email} onChange={handleChange} required placeholder="hello@mustafa.me" className={inputClass} />
+                <div>
+                  <p className="text-xs font-mono font-semibold text-primary uppercase tracking-widest mb-2">Direct</p>
+                  <a href="https://wa.me/923400488902" target="_blank" rel="noreferrer" className="text-muted hover:text-foreground font-medium transition-colors">WhatsApp</a>
                 </div>
               </div>
-              <div className="space-y-2">
-                <label htmlFor="subject" className="text-xs font-mono text-[var(--primary)] uppercase tracking-widest px-1 font-semibold">Subject</label>
-                <input type="text" id="subject" name="subject" value={form.subject} onChange={handleChange} required placeholder="Let's build something amazing" className={inputClass} />
+            </motion.div>
+          </div>
+
+          {/* Right: Premium Minimal Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full max-w-md lg:ml-auto"
+          >
+            <form className="flex flex-col gap-8">
+              <div className="relative">
+                <input 
+                  type="text" 
+                  id="name" 
+                  className="peer w-full bg-transparent border-b border-gray-300 py-3 text-foreground font-inter focus:outline-none focus:border-foreground transition-colors placeholder-transparent"
+                  placeholder="Name"
+                />
+                <label htmlFor="name" className="absolute left-0 top-3 text-muted text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-foreground peer-[&:not(:placeholder-shown)]:-top-4 peer-[&:not(:placeholder-shown)]:text-xs cursor-text">
+                  Name
+                </label>
               </div>
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-xs font-mono text-[var(--primary)] uppercase tracking-widest px-1 font-semibold">Message</label>
-                <textarea id="message" name="message" value={form.message} onChange={handleChange} required rows={5} placeholder="Hi Mustafa, I have a project idea..." className={`${inputClass} resize-none`} />
+
+              <div className="relative">
+                <input 
+                  type="email" 
+                  id="email" 
+                  className="peer w-full bg-transparent border-b border-gray-300 py-3 text-foreground font-inter focus:outline-none focus:border-foreground transition-colors placeholder-transparent"
+                  placeholder="Email"
+                />
+                <label htmlFor="email" className="absolute left-0 top-3 text-muted text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-foreground peer-[&:not(:placeholder-shown)]:-top-4 peer-[&:not(:placeholder-shown)]:text-xs cursor-text">
+                  Email
+                </label>
               </div>
-              <motion.button whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} type="submit" disabled={status === 'sending'} className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[var(--primary)] text-white font-semibold text-sm hover:bg-[var(--primary)]/90 transition-all duration-300 disabled:opacity-70 shadow-sm">
-                {status === 'idle' && <><Send className="w-4 h-4" />Send Message</>}
-                {status === 'sending' && <><Loader2 className="w-4 h-4 animate-spin" />Sending...</>}
-                {status === 'sent' && <><CheckCircle className="w-4 h-4" />Message Sent!</>}
-              </motion.button>
+
+              <div className="relative">
+                <input 
+                  type="text" 
+                  id="subject" 
+                  className="peer w-full bg-transparent border-b border-gray-300 py-3 text-foreground font-inter focus:outline-none focus:border-foreground transition-colors placeholder-transparent"
+                  placeholder="Subject"
+                />
+                <label htmlFor="subject" className="absolute left-0 top-3 text-muted text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-foreground peer-[&:not(:placeholder-shown)]:-top-4 peer-[&:not(:placeholder-shown)]:text-xs cursor-text">
+                  Subject
+                </label>
+              </div>
+
+              <div className="relative mt-2">
+                <textarea 
+                  id="message" 
+                  rows={4}
+                  className="peer w-full bg-transparent border-b border-gray-300 py-3 text-foreground font-inter focus:outline-none focus:border-foreground transition-colors placeholder-transparent resize-none"
+                  placeholder="Message"
+                />
+                <label htmlFor="message" className="absolute left-0 top-3 text-muted text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-foreground peer-[&:not(:placeholder-shown)]:-top-4 peer-[&:not(:placeholder-shown)]:text-xs cursor-text">
+                  Message
+                </label>
+              </div>
+
+              <button 
+                type="submit"
+                className="group flex items-center justify-between w-full mt-4 py-4 border-b border-foreground text-foreground font-syne font-bold text-lg hover:text-primary hover:border-primary transition-colors"
+              >
+                <span>Send Message</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
             </form>
           </motion.div>
+
         </div>
       </div>
     </section>

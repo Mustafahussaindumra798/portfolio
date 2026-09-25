@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import AIChatbot from '@/components/AIChatbot';
-import BackgroundAI from '@/components/BackgroundAI';
 
 export const metadata: Metadata = {
   title: 'Mustafa Hussain | Python Developer & AI/ML Enthusiast',
@@ -70,11 +69,10 @@ export default function RootLayout({
       </head>
       <body className="font-inter antialiased overflow-x-hidden">
         <ThemeProvider>
-          <div className="relative min-h-screen overflow-x-hidden selection:bg-[var(--primary)]/30 selection:text-[var(--primary)]">
-            <BackgroundAI />
-            <div className="relative z-10">
+          <div className="relative min-h-screen selection:bg-primary/20 selection:text-primary">
+            <div className="relative z-10 flex flex-col min-h-screen">
               <Navbar />
-              <main>{children}</main>
+              <main className="flex-grow">{children}</main>
               <Footer />
             </div>
           </div>

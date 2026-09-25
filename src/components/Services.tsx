@@ -1,82 +1,85 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import SectionHeader from './SectionHeader';
-import {
-  Code,
-  Brain,
-  Globe,
-  Rocket,
-} from 'lucide-react';
 
-const services = [
+const expertiseAreas = [
   {
-    icon: Globe,
-    title: 'Full-Stack Web Development',
-    description:
-      'Designing and engineering fast, responsive, and modern web applications using Next.js, React, and Tailwind CSS.',
+    number: '01',
+    title: 'Full-Stack Development',
+    description: 'Architecting robust, scalable web applications using modern JavaScript/TypeScript ecosystems. Focusing on high-performance frontends and secure, efficient backend services.',
+    tech: 'React, Next.js, Node.js, TypeScript, Tailwind CSS'
   },
   {
-    icon: Code,
-    title: 'Python Development & Scripting',
-    description:
-      'Building robust backend logic, data extraction scripts, and custom automation tools tailored to technical requirements.',
+    number: '02',
+    title: 'Python Development',
+    description: 'Developing data-intensive applications, automation scripts, and backend systems. Building resilient microservices and complex analytical tools.',
+    tech: 'Python, FastAPI, Django, Pandas, Data Engineering'
   },
   {
-    icon: Brain,
+    number: '03',
     title: 'AI & API Integration',
-    description:
-      'Connecting web applications with OpenAI APIs, machine learning models, and smart automated workflows.',
+    description: 'Integrating Large Language Models and intelligent capabilities into existing products. Designing smart features that elevate user experience and operational efficiency.',
+    tech: 'OpenAI API, Machine Learning, Scikit-Learn, REST APIs'
   },
   {
-    icon: Rocket,
+    number: '04',
     title: 'Digital Product Strategy',
-    description:
-      'Leveraging my experience as CloudExify COO to help plan, architect, and execute web solutions for clients.',
-  },
+    description: 'Guiding technical product lifecycles from conception to deployment. Translating business requirements into technical architecture and actionable engineering plans.',
+    tech: 'System Architecture, Technical Leadership, Agile'
+  }
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="section-padding relative">
-      <div className="relative max-w-7xl mx-auto">
-        <SectionHeader
-          subtitle="// What I Do"
-          title="Services & Capabilities."
-          description="Focused technical capabilities to build, scale, and deliver digital products."
-        />
+    <section id="expertise" className="py-24 md:py-32 bg-white border-y border-gray-100">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+        
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
+          <div>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="font-mono text-sm font-medium text-primary">04</span>
+              <div className="h-px w-12 bg-primary/20" />
+              <h2 className="font-syne text-xl md:text-2xl font-bold tracking-tight text-foreground uppercase">Expertise</h2>
+            </div>
+            <h3 className="font-syne text-3xl md:text-5xl font-bold text-foreground max-w-2xl leading-[1.1] tracking-tight">
+              Technical capabilities focused on product delivery.
+            </h3>
+          </div>
+        </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-          {services.map((service, i) => (
-            <motion.div
-              key={service.title}
+        <div className="flex flex-col border-t border-gray-200">
+          {expertiseAreas.map((area, index) => (
+            <motion.div 
+              key={area.number}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="group relative rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-8 hover:border-[var(--primary)] transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="group grid grid-cols-1 md:grid-cols-[100px,1fr,1fr] lg:grid-cols-[150px,1.5fr,2fr] gap-6 md:gap-12 py-10 md:py-16 border-b border-gray-200 hover:bg-gray-50 transition-colors duration-500"
             >
-              <div>
-                <div className="flex justify-between items-start mb-6">
-                  <div className="w-12 h-12 rounded-lg bg-[var(--primary)]/5 flex items-center justify-center text-[var(--primary)] group-hover:bg-[var(--primary)] group-hover:text-white transition-colors duration-300">
-                    <service.icon className="w-6 h-6" />
-                  </div>
-                  <span className="font-mono text-[var(--muted)] text-sm font-medium opacity-50 group-hover:opacity-100 transition-opacity">
-                    0{i + 1}
-                  </span>
+              {/* Number */}
+              <div className="font-mono text-xl text-muted font-light px-4 md:px-0 group-hover:text-primary transition-colors">
+                {area.number}
+              </div>
+
+              {/* Title & Tech */}
+              <div className="px-4 md:px-0">
+                <h4 className="font-syne text-2xl font-bold text-foreground mb-4">{area.title}</h4>
+                <div className="font-mono text-xs text-primary font-medium tracking-wide uppercase">
+                  {area.tech}
                 </div>
+              </div>
 
-                <h3 className="font-syne text-xl font-bold mb-3 text-[var(--foreground)]">
-                  {service.title}
-                </h3>
-
-                <p className="text-[var(--muted)] text-sm leading-relaxed">
-                  {service.description}
+              {/* Description */}
+              <div className="px-4 md:px-0 flex items-center">
+                <p className="text-muted text-base md:text-lg leading-relaxed font-inter font-light">
+                  {area.description}
                 </p>
               </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

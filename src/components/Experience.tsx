@@ -1,91 +1,72 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import SectionHeader from './SectionHeader';
-import { Briefcase, Calendar, ChevronRight } from 'lucide-react';
 
 const experiences = [
   {
     role: 'Co-Founder & COO',
     company: 'CloudExify',
-    date: '2023 - Present',
-    description: 'Leading operations and technical strategy. Coordinating development teams to build scalable web applications, managing client relationships, and steering product vision for digital solutions.',
-    skills: ['Leadership', 'Product Strategy', 'Operations', 'Full-Stack Architecture'],
-    link: 'https://cloudexify.site/',
+    period: '2023 — Present',
+    description: 'Leading operational technology strategies and product development. Architecting robust systems and overseeing the technical lifecycle of core products.'
   },
   {
     role: 'Web Development Intern',
     company: 'Arch Technologies',
-    date: 'April 2026 - May 2026',
-    description: 'Developed full-stack web applications using modern frameworks. Collaborated with senior developers to implement responsive UIs and robust backend architectures. Received a Letter of Recommendation for excellent performance.',
-    skills: ['Web Development', 'React', 'Backend Integration', 'Team Collaboration'],
-    link: null,
+    period: 'April 2026 — May 2026',
+    description: 'Contributed to front-end architecture and UI development using modern JavaScript frameworks. Collaborated with senior engineers to optimize application performance.'
   }
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="section-padding relative">
-      <div className="max-w-4xl mx-auto">
-        <SectionHeader
-          subtitle="// Professional Journey"
-          title="Experience."
-          description="A track record of building products, leading teams, and turning complex requirements into scalable software solutions."
-        />
+    <section id="experience" className="py-24 md:py-32 bg-white border-y border-gray-100">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+        
+        <div className="flex flex-col md:flex-row gap-16 lg:gap-32">
+          
+          {/* Left Column: Header */}
+          <div className="w-full md:w-1/3">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="font-mono text-sm font-medium text-primary">06</span>
+              <div className="h-px w-12 bg-primary/20" />
+              <h2 className="font-syne text-xl md:text-2xl font-bold tracking-tight text-foreground uppercase">Experience</h2>
+            </div>
+            <h3 className="font-syne text-3xl md:text-4xl font-bold text-foreground leading-[1.2] tracking-tight sticky top-32">
+              Professional Timeline
+            </h3>
+          </div>
 
-        <div className="mt-16 space-y-8">
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true, margin: '-50px' }}
-              className="relative pl-8 md:pl-0"
-            >
-              {/* Timeline line for mobile */}
-              <div className="md:hidden absolute left-0 top-0 bottom-0 w-px bg-[var(--card-border)]" />
-              
-              <div className="group relative bg-[var(--card-bg)] border border-[var(--card-border)] rounded-xl p-6 md:p-8 hover:border-[var(--primary)] transition-all duration-300 shadow-sm hover:shadow-md">
-                {/* Timeline dot for mobile */}
-                <div className="md:hidden absolute -left-[4px] top-8 w-2 h-2 rounded-full bg-[var(--primary)] ring-4 ring-[var(--background)]" />
-
-                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-bold text-[var(--foreground)] mb-1 group-hover:text-[var(--primary)] transition-colors">
-                      {exp.role}
-                    </h3>
-                    <div className="flex items-center gap-2 text-[var(--primary)] font-semibold">
-                      <Briefcase className="w-4 h-4" />
-                      {exp.link ? (
-                        <a href={exp.link} target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-1">
-                          {exp.company} <ChevronRight className="w-3 h-3" />
-                        </a>
-                      ) : (
-                        <span>{exp.company}</span>
-                      )}
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-[var(--muted)] whitespace-nowrap bg-[var(--section-bg)] border border-[var(--card-border)] px-4 py-1.5 rounded-full w-fit font-medium">
-                    <Calendar className="w-4 h-4" />
-                    {exp.date}
-                  </div>
+          {/* Right Column: Timeline */}
+          <div className="w-full md:w-2/3 flex flex-col">
+            {experiences.map((exp, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className={`flex flex-col py-10 ${index !== experiences.length - 1 ? 'border-b border-gray-200' : ''}`}
+              >
+                <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 gap-2">
+                  <h4 className="font-syne text-2xl font-bold text-foreground">
+                    {exp.role}
+                  </h4>
+                  <span className="font-mono text-sm font-semibold text-primary uppercase tracking-widest">
+                    {exp.period}
+                  </span>
                 </div>
-
-                <p className="text-[var(--muted)] leading-relaxed mb-6">
+                
+                <h5 className="font-inter text-lg font-medium text-foreground mb-6">
+                  {exp.company}
+                </h5>
+                
+                <p className="text-muted text-base md:text-lg leading-relaxed font-inter font-light">
                   {exp.description}
                 </p>
+              </motion.div>
+            ))}
+          </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {exp.skills.map(skill => (
-                    <span key={skill} className="text-xs font-medium px-3 py-1 bg-[var(--section-bg)] text-[var(--muted)] rounded-md border border-[var(--card-border)]">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
         </div>
       </div>
     </section>

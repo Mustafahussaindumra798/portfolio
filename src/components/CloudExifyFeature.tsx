@@ -1,94 +1,77 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Rocket, Server, Users, ArrowRight, ShieldCheck } from 'lucide-react';
-import SectionHeader from './SectionHeader';
-
-const features = [
-  {
-    icon: Server,
-    title: 'Scalable Infrastructure',
-    description: 'We build robust architectures that grow with your business, ensuring high performance under load.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Secure by Design',
-    description: 'Implementing industry best practices to keep enterprise data and applications safe.',
-  },
-  {
-    icon: Users,
-    title: 'Client-Centric Approach',
-    description: 'Managing technical teams to deliver solutions precisely aligned with client objectives.',
-  },
-];
+import { ArrowUpRight } from 'lucide-react';
 
 export default function CloudExifyFeature() {
   return (
-    <section id="cloudexify" className="section-padding relative overflow-hidden bg-[var(--section-bg)]">
-      {/* Abstract Background */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[80px] -translate-x-1/2 translate-y-1/2" />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Column: Text & CTA */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary font-mono text-sm mb-6 border border-primary/20">
-              <Rocket className="w-4 h-4" />
-              <span>Building Beyond Individual Projects</span>
-            </div>
-            
-            <h2 className="font-syne text-4xl md:text-5xl font-bold mb-6">
-              Empowering Digital Growth at <span className="text-gradient">CloudExify</span>
-            </h2>
-            
-            <p className="text-[var(--muted)] text-lg leading-relaxed mb-8 max-w-xl">
-              As Co-Founder and COO, I lead technical operations and strategic direction for CloudExify. 
-              We transform complex business challenges into elegant, scalable digital solutions. 
-              From intelligent web platforms to enterprise architecture, our team delivers excellence.
-            </p>
-
-            <a
-              href="https://cloudexify.site/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background font-semibold rounded-xl hover:bg-foreground/90 transition-colors"
+    <section className="py-24 md:py-32 bg-foreground text-background overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+        
+        <div className="flex flex-col md:flex-row justify-between items-start gap-16 lg:gap-24">
+          
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              Visit CloudExify 
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+              <div className="flex items-center gap-4 mb-8">
+                <span className="font-mono text-sm font-medium text-white/50">07</span>
+                <div className="h-px w-12 bg-white/20" />
+                <h2 className="font-syne text-xl md:text-2xl font-bold tracking-tight uppercase">Product Leadership</h2>
+              </div>
+              
+              <h3 className="font-syne text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-[1.1]">
+                Building With CloudExify.
+              </h3>
+              
+              <div className="font-mono text-sm tracking-widest uppercase text-primary mb-8 font-semibold">
+                Co-Founder & COO
+              </div>
+              
+              <p className="text-white/70 text-lg leading-relaxed font-inter font-light mb-10">
+                At CloudExify, I drive the technical vision and operational execution. 
+                My focus is on transforming complex infrastructure and cloud challenges into seamless, 
+                scalable software products that empower modern businesses to operate with unparalleled efficiency.
+              </p>
+              
+              <a 
+                href="#"
+                className="group inline-flex items-center gap-2 font-inter text-sm font-semibold text-white hover:text-primary transition-colors"
+              >
+                Visit CloudExify
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+            </motion.div>
+          </div>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full md:w-1/2"
+          >
+            {/* Minimalist Abstract Representation of CloudExify Product */}
+            <div className="w-full aspect-square border border-white/10 bg-white/5 relative overflow-hidden flex items-center justify-center p-8 lg:p-12">
+              <div className="w-full h-full border border-white/10 relative flex flex-col">
+                <div className="h-12 border-b border-white/10 flex items-center px-6 gap-2">
+                  <div className="w-2 h-2 rounded-full bg-white/20" />
+                  <div className="w-2 h-2 rounded-full bg-white/20" />
+                </div>
+                <div className="flex-1 p-6 flex gap-6">
+                  <div className="w-1/3 h-full border border-white/10 bg-white/5" />
+                  <div className="flex-1 flex flex-col gap-6">
+                    <div className="h-1/2 border border-white/10 bg-white/5" />
+                    <div className="h-1/2 border border-white/10 bg-white/5" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Right Column: Feature Cards */}
-          <div className="grid sm:grid-cols-2 gap-4 lg:gap-6 relative">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                viewport={{ once: true }}
-                className={`bg-[var(--card-bg)] border border-[var(--card-border)] p-6 rounded-2xl backdrop-blur-sm hover:border-primary/30 transition-colors ${
-                  index === 2 ? 'sm:col-span-2 sm:w-1/2 sm:justify-self-center' : ''
-                }`}
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
-                  <feature.icon className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-foreground">{feature.title}</h3>
-                <p className="text-[var(--muted)] text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
