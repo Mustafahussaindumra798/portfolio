@@ -49,7 +49,7 @@ export default function Projects() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
           <div>
             <div className="flex items-center gap-4 mb-6">
-              <span className="font-mono text-sm font-medium text-primary">05</span>
+              <span className="font-mono text-sm font-medium text-primary">02</span>
               <div className="h-px w-12 bg-primary/20" />
               <h2 className="font-syne text-xl md:text-2xl font-bold tracking-tight text-foreground uppercase">Selected Work</h2>
             </div>

@@ -7,17 +7,17 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import AIChatbot from '@/components/AIChatbot';
 
 export const metadata: Metadata = {
-  title: 'Mustafa Hussain | Python Developer & AI/ML Enthusiast',
+  title: 'Mustafa Hussain | Python Developer & Aspiring AI Engineer',
   description:
-    'Mustafa Hussain is a Python Developer, AI/ML Engineering Enthusiast and AI-Powered Applications Developer, building practical software and exploring intelligent technologies.',
+    'Software Engineering Student at COMSATS University Islamabad (Wah Campus), Python Developer, AI-powered application builder, and Co-Founder & COO at CloudExify.',
   keywords: [
     'Mustafa Hussain',
+    'Software Engineering Student',
     'Python Developer',
-    'AI/ML Enthusiast',
     'AI Engineer',
     'Machine Learning',
     'CloudExify',
-    'Software Engineer',
+    'COMSATS',
     'Portfolio',
   ],
   authors: [{ name: 'Mustafa Hussain' }],
@@ -25,16 +25,16 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://mustafa-hussain.vercel.app',
-    title: 'Mustafa Hussain | Python Developer & AI/ML Enthusiast',
+    title: 'Mustafa Hussain | Python Developer & Aspiring AI Engineer',
     description:
-      'Mustafa Hussain is a Python Developer, AI/ML Engineering Enthusiast and AI-Powered Applications Developer, building practical software and exploring intelligent technologies.',
+      'Software Engineering Student at COMSATS University Islamabad (Wah Campus), Python Developer, AI-powered application builder, and Co-Founder & COO at CloudExify.',
     siteName: 'Mustafa Hussain Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mustafa Hussain | Python Developer & AI/ML Enthusiast',
+    title: 'Mustafa Hussain | Python Developer & Aspiring AI Engineer',
     description:
-      'Mustafa Hussain is a Python Developer, AI/ML Engineering Enthusiast and AI-Powered Applications Developer, building practical software and exploring intelligent technologies.',
+      'Software Engineering Student at COMSATS University Islamabad (Wah Campus), Python Developer, AI-powered application builder, and Co-Founder & COO at CloudExify.',
   },
   robots: {
     index: true,

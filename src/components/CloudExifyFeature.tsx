@@ -18,7 +18,7 @@ export default function CloudExifyFeature() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center gap-4 mb-8">
-                <span className="font-mono text-sm font-medium text-white/50">07</span>
+                <span className="font-mono text-sm font-medium text-white/50">05</span>
                 <div className="h-px w-12 bg-white/20" />
                 <h2 className="font-syne text-xl md:text-2xl font-bold tracking-tight uppercase">Product Leadership</h2>
               </div>

@@ -1,24 +1,24 @@
 import Hero from '@/components/Hero';
-import Trust from '@/components/Trust';
 import About from '@/components/About';
-import Services from '@/components/Services';
 import Projects from '@/components/Projects';
+import Skills from '@/components/Skills';
 import Experience from '@/components/Experience';
 import CloudExifyFeature from '@/components/CloudExifyFeature';
-import Skills from '@/components/Skills';
+import Certificates from '@/components/Certificates';
+import Roadmap from '@/components/Roadmap';
 import Contact from '@/components/Contact';
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <Trust />
       <About />
-      <Services />
       <Projects />
+      <Skills />
       <Experience />
       <CloudExifyFeature />
-      <Skills />
+      <Certificates />
+      <Roadmap />
       <Contact />
     </>
   );

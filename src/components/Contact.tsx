@@ -13,7 +13,7 @@ export default function Contact() {
           {/* Left: Typography & Links */}
           <div>
             <div className="flex items-center gap-4 mb-6">
-              <span className="font-mono text-sm font-medium text-primary">09</span>
+              <span className="font-mono text-sm font-medium text-primary">08</span>
               <div className="h-px w-12 bg-primary/20" />
               <h2 className="font-syne text-xl md:text-2xl font-bold tracking-tight text-foreground uppercase">Contact</h2>
             </div>

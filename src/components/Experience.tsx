@@ -10,6 +10,12 @@ const experiences = [
     description: 'Leading operational technology strategies and product development. Architecting robust systems and overseeing the technical lifecycle of core products.'
   },
   {
+    role: 'Site Supervisor',
+    company: 'CloudExify Internship 2026',
+    period: '2026',
+    description: 'Site Supervisor for the CloudExify Internship 2026 program. Coordinated intern activities, provided technical support, and oversaw program execution.'
+  },
+  {
     role: 'Web Development Intern',
     company: 'Arch Technologies',
     period: 'April 2026 — May 2026',
@@ -27,7 +33,7 @@ export default function Experience() {
           {/* Left Column: Header */}
           <div className="w-full md:w-1/3">
             <div className="flex items-center gap-4 mb-6">
-              <span className="font-mono text-sm font-medium text-primary">06</span>
+              <span className="font-mono text-sm font-medium text-primary">04</span>
               <div className="h-px w-12 bg-primary/20" />
               <h2 className="font-syne text-xl md:text-2xl font-bold tracking-tight text-foreground uppercase">Experience</h2>
             </div>

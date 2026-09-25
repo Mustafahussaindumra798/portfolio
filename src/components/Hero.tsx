@@ -22,8 +22,8 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="inline-block text-xs font-mono font-medium tracking-[0.2em] text-muted uppercase mb-8 border border-gray-200 px-3 py-1 rounded-full">
-                Software Engineer &middot; Full-Stack Developer &middot; AI/ML
+              <span className="inline-block text-[10px] sm:text-xs font-mono font-medium tracking-widest text-muted uppercase mb-8 border border-gray-200 px-3 py-1.5 rounded-full">
+                SOFTWARE ENGINEERING STUDENT &middot; PYTHON DEVELOPER &middot; ASPIRING AI ENGINEER
               </span>
             </motion.div>
 
@@ -31,18 +31,18 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-syne text-[2.75rem] leading-[1.1] md:text-6xl lg:text-[4.5rem] font-bold text-foreground mb-6 tracking-tight"
+              className="font-syne text-[2.5rem] leading-[1.1] md:text-5xl lg:text-[4rem] font-bold text-foreground mb-6 tracking-tight"
             >
-              Building Software That Turns Ideas Into Real Products.
+              Building AI-Powered Applications While Growing Toward AI Engineering.
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-muted text-lg md:text-xl max-w-xl leading-relaxed mb-10 font-inter font-light"
+              className="text-muted text-base md:text-lg max-w-xl leading-relaxed mb-10 font-inter font-light"
             >
-              I am Mustafa Hussain. I design, architect, and develop modern web applications, full-stack systems, and intelligent AI-driven software for real business needs.
+              Software Engineering Student at COMSATS University Islamabad (Wah Campus), focused on Python development, AI-powered applications, product development, and continuous learning across modern technologies.
             </motion.p>
 
             <motion.div
@@ -96,15 +96,15 @@ export default function Hero() {
                 <div className="absolute bottom-8 right-8 flex flex-col gap-3">
                   <div className="flex items-center gap-3 bg-white px-4 py-2 border border-gray-100 shadow-sm">
                     <Terminal className="w-4 h-4 text-primary" />
-                    <span className="text-xs font-mono font-medium text-foreground">Backend Architecture</span>
+                    <span className="text-xs font-mono font-medium text-foreground">Python Developer</span>
                   </div>
                   <div className="flex items-center gap-3 bg-white px-4 py-2 border border-gray-100 shadow-sm translate-x-4">
                     <Code2 className="w-4 h-4 text-primary" />
-                    <span className="text-xs font-mono font-medium text-foreground">Frontend Engineering</span>
+                    <span className="text-xs font-mono font-medium text-foreground">AI-Powered Applications</span>
                   </div>
                   <div className="flex items-center gap-3 bg-white px-4 py-2 border border-gray-100 shadow-sm">
                     <Database className="w-4 h-4 text-primary" />
-                    <span className="text-xs font-mono font-medium text-foreground">Machine Learning</span>
+                    <span className="text-xs font-mono font-medium text-foreground">Aspiring AI Engineer</span>
                   </div>
                 </div>
 
