@@ -18,12 +18,12 @@ export default function ResumePage() {
         >
           <ArrowLeft className="w-4 h-4" /> Back to Portfolio
         </Link>
-        <button 
-          onClick={() => typeof window !== 'undefined' && window.print()}
+        <a 
+          href="javascript:window.print()"
           className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-colors"
         >
           <Download className="w-4 h-4" /> Print / Save as PDF
-        </button>
+        </a>
       </div>
 
       {/* Resume Document (A4 format roughly) */}
