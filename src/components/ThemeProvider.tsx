@@ -42,7 +42,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, [theme, mounted]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    setTheme((prev: Theme) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
   // During SSR / before mount, render children without context to avoid hydration mismatch
