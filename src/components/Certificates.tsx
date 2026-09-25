@@ -6,13 +6,40 @@ import Image from 'next/image';
 
 const certificates = [
   {
-    title: "Example Technical Certification",
-    issuer: "Example Provider",
+    title: "Google Prompting Essentials",
+    issuer: "Google / Coursera",
+    date: "Sep 18, 2026",
+    image: "/certificates/google-prompting-essentials.png",
+    credentialUrl: "https://coursera.org/verify/specialization/M86E9U51LM35"
+  },
+  {
+    title: "Start Writing Prompts like a Pro",
+    issuer: "Google / Coursera",
+    date: "Aug 10, 2026",
+    image: "/certificates/google-prompts-pro.png",
+    credentialUrl: "https://coursera.org/verify/WGPHKTMT95IJ"
+  },
+  {
+    title: "Programming for Everybody (Getting Started with Python)",
+    issuer: "University of Michigan / Coursera",
+    date: "Jul 31, 2026",
+    image: "/certificates/python-michigan.png",
+    credentialUrl: "https://coursera.org/verify/15ULSDEPLPSJ"
+  },
+  {
+    title: "Web Development Internship and Training Program (8 Weeks)",
+    issuer: "Arch Technologies",
+    date: "May 2026",
+    image: "/certificates/arch-technologies.png",
+    credentialUrl: ""
+  },
+  {
+    title: "HACKDATA V1 - Certificate of Participation",
+    issuer: "Google Developer Groups (COMSATS University Wah)",
     date: "2026",
-    image: "", // Placeholder for real image
-    credentialUrl: "#"
+    image: "/certificates/hackdata.jpg",
+    credentialUrl: ""
   }
-  // Add real certificates here
 ];
 
 export default function Certificates() {
