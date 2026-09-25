@@ -34,6 +34,20 @@ const certificates = [
     credentialUrl: ""
   },
   {
+    title: "Letter of Recommendation (Internship)",
+    issuer: "Arch Technologies",
+    date: "May 30, 2026",
+    image: "/certificates/arch-tech-recommendation.png",
+    credentialUrl: ""
+  },
+  {
+    title: "Design Prompts for Everyday Work Tasks",
+    issuer: "Google / Coursera",
+    date: "Aug 17, 2026",
+    image: "/certificates/google-prompts.png",
+    credentialUrl: "https://coursera.org/verify/H6TH564W64D0"
+  },
+  {
     title: "HACKDATA V1 - Certificate of Participation",
     issuer: "Google Developer Groups (COMSATS University Wah)",
     date: "2026",

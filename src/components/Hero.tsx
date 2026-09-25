@@ -83,14 +83,17 @@ export default function Hero() {
                 <div className="w-2.5 h-2.5 rounded-full bg-gray-200" />
               </div>
               {/* Content Area */}
-              <div className="flex-1 relative p-8 flex flex-col justify-between">
+              <div className="flex-1 relative overflow-hidden">
+                <Image 
+                  src="/profile.jpg" 
+                  alt="Mustafa Hussain - Software Engineering Student & Python Developer" 
+                  fill 
+                  className="object-cover object-top grayscale-[20%] hover:grayscale-0 transition-all duration-700" 
+                  priority
+                />
                 
-                {/* Abstract Code/Tech representation */}
-                <div className="space-y-4 opacity-30">
-                  <div className="w-3/4 h-8 bg-gray-200" />
-                  <div className="w-1/2 h-4 bg-gray-200" />
-                  <div className="w-full h-32 bg-gray-200 mt-8" />
-                </div>
+                {/* Subtle gradient overlay to ensure tech labels remain readable */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
                 {/* Tech Labels */}
                 <div className="absolute bottom-8 right-8 flex flex-col gap-3">
@@ -107,7 +110,6 @@ export default function Hero() {
                     <span className="text-xs font-mono font-medium text-foreground">Aspiring AI Engineer</span>
                   </div>
                 </div>
-
               </div>
             </div>
             
