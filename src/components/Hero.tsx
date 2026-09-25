@@ -1,120 +1,51 @@
 'use client';
 
-import { useEffect, useRef, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Download, Eye } from 'lucide-react';
-import { useTheme } from './ThemeProvider';
-
-const roles = [
-  'Software Engineer',
-  'Full Stack Developer',
-  'AI Chatbot Builder',
-  'Problem Solver',
-];
+import { ArrowDown, Eye } from 'lucide-react';
 
 export default function Hero() {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [displayText, setDisplayText] = useState('');
-
-  // Typewriter effect
-  useEffect(() => {
-    const currentRole = roles[roleIndex];
-
-    const timeout = setTimeout(
-      () => {
-        if (!isDeleting) {
-          setDisplayText(currentRole.slice(0, charIndex + 1));
-          setCharIndex((prev) => prev + 1);
-
-          if (charIndex + 1 === currentRole.length) {
-            setTimeout(() => setIsDeleting(true), 2000);
-          }
-        } else {
-          setDisplayText(currentRole.slice(0, charIndex - 1));
-          setCharIndex((prev) => prev - 1);
-
-          if (charIndex <= 1) {
-            setIsDeleting(false);
-            setRoleIndex((prev) => (prev + 1) % roles.length);
-            setCharIndex(0);
-          }
-        }
-      },
-      isDeleting ? 40 : 80
-    );
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, roleIndex]);
-
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--background)] pt-20"
     >
-      {/* Subtle Gradient Overlays */}
-      <div className="absolute inset-0 z-[1] pointer-events-none">
-        <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
-      </div>
-
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-24 w-full">
         <div className="grid lg:grid-cols-[1fr,0.8fr] gap-12 items-center">
           {/* Left Column */}
           <div>
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-mono text-primary mb-6">
-                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                Available for work
+              <span className="inline-block text-xs md:text-sm font-semibold tracking-widest text-[var(--primary)] uppercase mb-6">
+                Web Developer &bull; Full-Stack Developer
               </span>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="font-syne text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.1] mb-6"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="font-syne text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] text-[var(--foreground)] mb-6 tracking-tight"
             >
-              Hi, I&apos;m{' '}
-              <span className="text-gradient">Mustafa</span>
-              <br />
-              <span className="text-gradient">Hussain</span>
+              Building Modern Digital Experiences That Move Businesses Forward.
             </motion.h1>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex items-center gap-2 mb-6"
-            >
-              <span className="font-mono text-lg md:text-xl text-[var(--muted)]">{'>'}</span>
-              <span className="font-mono text-lg md:text-xl text-primary">
-                {displayText}
-              </span>
-              <span className="font-mono text-lg md:text-xl text-primary cursor-blink">|</span>
-            </motion.div>
-
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-[var(--muted)] text-base md:text-lg max-w-xl leading-relaxed mb-8"
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-[var(--muted)] text-base md:text-lg max-w-xl leading-relaxed mb-10"
             >
-              BSc Software Engineering student with 1 year of experience passionate about building 
-              intelligent AI solutions and smart web experiences. I turn complex problems into elegant, 
-              scalable solutions.
+              I am Mustafa Hussain. I design and develop modern, responsive web applications focused on performance, usability, and real business goals. Specialized in Python development and intelligent technologies.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-wrap gap-4"
             >
               <a
@@ -123,59 +54,42 @@ export default function Hero() {
                   e.preventDefault();
                   document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-cyan-400 text-dark-900 font-semibold text-sm hover:shadow-[0_0_30px_rgba(0,212,255,0.3)] transition-all duration-300"
+                className="group inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[var(--primary)] text-white font-medium text-sm hover:bg-[var(--primary)]/90 transition-all duration-300 shadow-sm hover:shadow-md"
               >
                 <Eye className="w-4 h-4" />
                 View My Work
               </a>
               <a
-                href="/resume.pdf"
-                target="_blank"
-                className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-primary/30 text-primary font-semibold text-sm hover:bg-primary/10 hover:border-primary/60 transition-all duration-300"
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="group inline-flex items-center gap-2 px-6 py-3 rounded-md border border-[var(--card-border)] bg-[var(--background)] text-[var(--foreground)] font-medium text-sm hover:bg-[var(--section-bg)] transition-all duration-300"
               >
-                <Download className="w-4 h-4 group-hover:animate-bounce" />
-                Download CV
+                Let's Talk
               </a>
             </motion.div>
           </div>
 
-          {/* Right Column — Avatar */}
+          {/* Right Column — Professional Visual */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="hidden lg:flex justify-center items-center"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="hidden lg:flex justify-end items-center relative"
           >
-            <div className="relative">
-              {/* Glow rings */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 blur-[60px] animate-pulse" />
-              <div className="relative w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-2 border-primary/20 shadow-[0_0_60px_rgba(0,212,255,0.15)]">
-                <div className="w-full h-full bg-gradient-to-br from-dark-700 to-dark-900 flex items-center justify-center">
-                  <span className="font-syne text-7xl font-bold text-gradient">MH</span>
-                </div>
+            <div className="relative w-full max-w-md aspect-square rounded-2xl overflow-hidden bg-[var(--section-bg)] border border-[var(--card-border)] shadow-sm flex items-center justify-center group hover:border-[var(--primary)]/30 transition-colors duration-500">
+              {/* Minimalist abstract representation of UI/Code */}
+              <div className="w-3/4 h-3/4 flex flex-col gap-4 opacity-40 group-hover:opacity-60 transition-opacity duration-500">
+                 <div className="w-full h-6 bg-[var(--card-border)] rounded-md"></div>
+                 <div className="w-2/3 h-6 bg-[var(--card-border)] rounded-md"></div>
+                 <div className="w-full h-32 bg-[var(--card-border)] rounded-md mt-4"></div>
+                 <div className="flex gap-4 mt-2">
+                   <div className="w-1/2 h-24 bg-[var(--card-border)] rounded-md"></div>
+                   <div className="w-1/2 h-24 bg-[var(--card-border)] rounded-md"></div>
+                 </div>
               </div>
-              {/* Floating badges */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -top-4 -right-4 px-3 py-1.5 rounded-lg glass text-xs font-mono text-primary"
-              >
-                Next.js
-              </motion.div>
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                className="absolute -bottom-4 -left-4 px-3 py-1.5 rounded-lg glass text-xs font-mono text-accent-300"
-              >
-                TypeScript
-              </motion.div>
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-                className="absolute top-1/2 -right-8 px-3 py-1.5 rounded-lg glass text-xs font-mono text-green-400"
-              >
-                React
-              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -185,15 +99,16 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        transition={{ delay: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:block"
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="flex flex-col items-center gap-2 text-[var(--muted)]"
+          animate={{ y: [0, 5, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex flex-col items-center gap-2 text-[var(--muted)] hover:text-[var(--primary)] transition-colors cursor-pointer"
+          onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
         >
-          <span className="font-mono text-xs tracking-wider">SCROLL</span>
+          <span className="font-mono text-[10px] tracking-widest uppercase">Scroll</span>
           <ArrowDown className="w-4 h-4" />
         </motion.div>
       </motion.div>

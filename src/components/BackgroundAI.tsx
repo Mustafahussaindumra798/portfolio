@@ -21,9 +21,19 @@ export default function BackgroundAI() {
       pulse: number;
       pulseDir: number;
       label?: string;
+      targetX?: number;
+      targetY?: number;
+    }
+
+    interface Attractor {
+      x: number;
+      y: number;
+      strength: number;
+      life: number;
     }
 
     const points: Point[] = [];
+    const attractors: Attractor[] = [];
     const count = Math.min(Math.floor((width * height) / 12000), 100);
     const labels = ['AI', 'INTELLIGENCE', 'NEURAL', 'LOGIC', 'MUSTAFA', '0101', 'CORE', 'BRAIN'];
 
@@ -31,24 +41,38 @@ export default function BackgroundAI() {
       points.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.6,
-        vy: (Math.random() - 0.5) * 0.6,
+        vx: (Math.random() - 0.5) * 0.3, // Slower velocity
+        vy: (Math.random() - 0.5) * 0.3, // Slower velocity
         size: Math.random() * 3 + 1,
         pulse: Math.random(),
-        pulseDir: 0.01 + Math.random() * 0.02,
+        pulseDir: 0.005 + Math.random() * 0.01, // Slower pulsing
         label: Math.random() > 0.9 ? labels[Math.floor(Math.random() * labels.length)] : undefined,
       });
     }
 
     let mouseX = -1000;
     let mouseY = -1000;
+    let isMouseDown = false;
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
     };
 
+    const handleMouseDown = (e: MouseEvent) => {
+      isMouseDown = true;
+      // Spawn an attractor on click
+      attractors.push({ x: e.clientX, y: e.clientY, strength: 2, life: 1.0 });
+      if (attractors.length > 3) attractors.shift(); // Keep max 3 attractors
+    };
+
+    const handleMouseUp = () => {
+      isMouseDown = false;
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mouseup', handleMouseUp);
 
     let animId: number;
 
@@ -66,14 +90,45 @@ export default function BackgroundAI() {
         p.pulse += p.pulseDir;
         if (p.pulse > 1 || p.pulse < 0) p.pulseDir *= -1;
 
-        // Interaction
+        // Interaction with mouse (gentle attract instead of repel when down)
         const dx = mouseX - p.x;
         const dy = mouseY - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 250) {
-          const force = (250 - dist) / 250;
-          p.x -= (dx / dist) * force * 2;
-          p.y -= (dy / dist) * force * 2;
+        
+        if (dist < 300) {
+          const force = (300 - dist) / 300;
+          if (isMouseDown) {
+            // Attract
+            p.vx += (dx / dist) * force * 0.5;
+            p.vy += (dy / dist) * force * 0.5;
+          } else {
+            // Repel slightly
+            p.x -= (dx / dist) * force * 1.5;
+            p.y -= (dy / dist) * force * 1.5;
+          }
+        }
+
+        // Apply attractor forces
+        attractors.forEach((attr) => {
+          const adx = attr.x - p.x;
+          const ady = attr.y - p.y;
+          const adist = Math.sqrt(adx * adx + ady * ady);
+          if (adist < 400 && attr.life > 0) {
+            const aforce = (400 - adist) / 400;
+            p.vx += (adx / adist) * aforce * attr.strength * attr.life * 0.1;
+            p.vy += (ady / adist) * aforce * attr.strength * attr.life * 0.1;
+          }
+        });
+
+        // Friction to prevent infinite acceleration
+        p.vx *= 0.98;
+        p.vy *= 0.98;
+        
+        // Ensure minimum baseline speed
+        const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+        if (speed < 0.2) {
+           p.vx += (Math.random() - 0.5) * 0.1;
+           p.vy += (Math.random() - 0.5) * 0.1;
         }
 
         const alpha = 0.15 + p.pulse * 0.4;
@@ -125,6 +180,22 @@ export default function BackgroundAI() {
         }
       }
 
+      // Update and draw attractors
+      attractors.forEach((attr, index) => {
+        attr.life -= 0.005;
+        if (attr.life > 0) {
+          ctx.beginPath();
+          ctx.arc(attr.x, attr.y, 50 * attr.life, 0, Math.PI * 2);
+          ctx.fillStyle = `${accentColor} ${attr.life * 0.1})`;
+          ctx.fill();
+        }
+      });
+      
+      // Clean up dead attractors
+      for (let i = attractors.length - 1; i >= 0; i--) {
+        if (attractors[i].life <= 0) attractors.splice(i, 1);
+      }
+
       animId = requestAnimationFrame(animate);
     };
 
@@ -133,6 +204,8 @@ export default function BackgroundAI() {
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('mouseup', handleMouseUp);
     };
   }, [theme]);
 
@@ -160,7 +233,7 @@ export default function BackgroundAI() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-60"
+      className="fixed inset-0 pointer-events-none z-0 opacity-30"
       style={{ filter: 'blur(0.5px)' }}
     />
   );

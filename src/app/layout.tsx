@@ -8,17 +8,17 @@ import AIChatbot from '@/components/AIChatbot';
 import BackgroundAI from '@/components/BackgroundAI';
 
 export const metadata: Metadata = {
-  title: 'Mustafa Hussain | Software Engineer & Full Stack Developer',
+  title: 'Mustafa Hussain | Python Developer & AI/ML Enthusiast',
   description:
-    'Portfolio of Mustafa Hussain — BSc Software Engineering student specializing in full-stack web development, AI chatbot development, and modern web experiences. Based in Pakistan.',
+    'Mustafa Hussain is a Python Developer, AI/ML Engineering Enthusiast and AI-Powered Applications Developer, building practical software and exploring intelligent technologies.',
   keywords: [
     'Mustafa Hussain',
+    'Python Developer',
+    'AI/ML Enthusiast',
+    'AI Engineer',
+    'Machine Learning',
+    'CloudExify',
     'Software Engineer',
-    'Full Stack Developer',
-    'Next.js Developer',
-    'React Developer',
-    'AI Chatbot Developer',
-    'Pakistan',
     'Portfolio',
   ],
   authors: [{ name: 'Mustafa Hussain' }],
@@ -26,16 +26,16 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://mustafa-hussain.vercel.app',
-    title: 'Mustafa Hussain | Software Engineer & Full Stack Developer',
+    title: 'Mustafa Hussain | Python Developer & AI/ML Enthusiast',
     description:
-      'Portfolio of Mustafa Hussain — BSc Software Engineering student specializing in full-stack web development, AI chatbot development, and modern web experiences.',
+      'Mustafa Hussain is a Python Developer, AI/ML Engineering Enthusiast and AI-Powered Applications Developer, building practical software and exploring intelligent technologies.',
     siteName: 'Mustafa Hussain Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mustafa Hussain | Software Engineer & Full Stack Developer',
+    title: 'Mustafa Hussain | Python Developer & AI/ML Enthusiast',
     description:
-      'Portfolio of Mustafa Hussain — BSc Software Engineering student specializing in full-stack web development.',
+      'Mustafa Hussain is a Python Developer, AI/ML Engineering Enthusiast and AI-Powered Applications Developer, building practical software and exploring intelligent technologies.',
   },
   robots: {
     index: true,
@@ -49,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -57,7 +57,9 @@ export default function RootLayout({
               (function() {
                 try {
                   var theme = localStorage.getItem('theme');
-                  if (theme === 'light' || (!theme && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+                  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
                     document.documentElement.classList.remove('dark');
                   }
                 } catch(e) {}
@@ -66,9 +68,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-inter antialiased">
+      <body className="font-inter antialiased overflow-x-hidden">
         <ThemeProvider>
-          <div className="relative min-h-screen selection:bg-primary/30 selection:text-primary-foreground">
+          <div className="relative min-h-screen overflow-x-hidden selection:bg-[var(--primary)]/30 selection:text-[var(--primary)]">
             <BackgroundAI />
             <div className="relative z-10">
               <Navbar />

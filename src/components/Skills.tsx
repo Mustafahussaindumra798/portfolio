@@ -3,27 +3,21 @@
 import { motion } from 'framer-motion';
 import SectionHeader from './SectionHeader';
 import {
+  SiPython,
   SiJavascript,
   SiTypescript,
-  SiPython,
-  SiCplusplus,
   SiReact,
   SiNextdotjs,
-  SiHtml5,
-  SiCss,
   SiTailwindcss,
   SiNodedotjs,
-  SiExpress,
-  SiMysql,
-  SiMongodb,
-  SiSupabase,
-  SiWordpress,
+  SiPandas,
+  SiScikitlearn,
+  SiOpenai,
   SiGit,
-  SiGithub,
-
+  SiDocker,
+  SiVercel
 } from 'react-icons/si';
-import { Bot, Globe, Code2 } from 'lucide-react';
-import { FaJava } from 'react-icons/fa';
+import { Brain, Code, Monitor, Wrench } from 'lucide-react';
 
 interface Skill {
   name: string;
@@ -33,59 +27,47 @@ interface Skill {
 
 interface SkillGroup {
   category: string;
+  icon: React.ReactNode;
   skills: Skill[];
 }
 
 const skillGroups: SkillGroup[] = [
   {
-    category: 'Languages',
+    category: 'Programming Languages',
+    icon: <Code className="w-5 h-5" />,
     skills: [
-      { name: 'Java', icon: <FaJava />, color: '#007396' },
-      { name: 'C++', icon: <SiCplusplus />, color: '#00599C' },
       { name: 'Python', icon: <SiPython />, color: '#3776AB' },
-      { name: 'JavaScript', icon: <SiJavascript />, color: '#F7DF1E' },
       { name: 'TypeScript', icon: <SiTypescript />, color: '#3178C6' },
+      { name: 'JavaScript', icon: <SiJavascript />, color: '#F7DF1E' },
     ],
   },
   {
-    category: 'Frontend',
+    category: 'Web Development',
+    icon: <Monitor className="w-5 h-5" />,
     skills: [
-      { name: 'React.js', icon: <SiReact />, color: '#61DAFB' },
       { name: 'Next.js', icon: <SiNextdotjs />, color: '#000000' },
-      { name: 'HTML5', icon: <SiHtml5 />, color: '#E34F26' },
-      { name: 'CSS3', icon: <SiCss />, color: '#1572B6' },
+      { name: 'React', icon: <SiReact />, color: '#61DAFB' },
       { name: 'Tailwind CSS', icon: <SiTailwindcss />, color: '#06B6D4' },
-    ],
-  },
-  {
-    category: 'Backend',
-    skills: [
       { name: 'Node.js', icon: <SiNodedotjs />, color: '#339933' },
-      { name: 'Express.js', icon: <SiExpress />, color: '#000000' },
     ],
   },
   {
-    category: 'Database',
+    category: 'AI & Data Processing',
+    icon: <Brain className="w-5 h-5" />,
     skills: [
-      { name: 'MySQL', icon: <SiMysql />, color: '#4479A1' },
-      { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248' },
-      { name: 'Supabase', icon: <SiSupabase />, color: '#3ECF8E' },
+      { name: 'Machine Learning', icon: <Brain />, color: '#8B5CF6' },
+      { name: 'Pandas', icon: <SiPandas />, color: '#150458' },
+      { name: 'Scikit-Learn', icon: <SiScikitlearn />, color: '#F7931E' },
+      { name: 'OpenAI API', icon: <SiOpenai />, color: '#412991' },
     ],
   },
   {
-    category: 'CMS / Tools',
+    category: 'Tools & Platforms',
+    icon: <Wrench className="w-5 h-5" />,
     skills: [
-      { name: 'WordPress', icon: <SiWordpress />, color: '#21759B' },
       { name: 'Git', icon: <SiGit />, color: '#F05032' },
-      { name: 'GitHub', icon: <SiGithub />, color: '#181717' },
-      { name: 'VS Code', icon: <Code2 />, color: '#007ACC' },
-    ],
-  },
-  {
-    category: 'AI / Other',
-    skills: [
-      { name: 'AI Chatbots', icon: <Bot />, color: '#FF5733' },
-      { name: 'REST APIs', icon: <Globe />, color: '#00D4FF' },
+      { name: 'Docker', icon: <SiDocker />, color: '#2496ED' },
+      { name: 'Vercel', icon: <SiVercel />, color: '#000000' },
     ],
   },
 ];
@@ -93,12 +75,11 @@ const skillGroups: SkillGroup[] = [
 export default function Skills() {
   return (
     <section id="skills" className="section-padding relative overflow-hidden">
-      <div className="absolute top-0 right-0 -translate-y-1/2 w-1/3 h-full bg-primary/5 blur-[120px] pointer-events-none" />
       <div className="relative max-w-7xl mx-auto">
         <SectionHeader
-          subtitle="// My Skills"
-          title="Technologies I Master"
-          description="A professional toolkit of languages, frameworks, and tools used to build high-performance digital products."
+          subtitle="// My Expertise"
+          title="Technical Arsenal."
+          description="A curated toolkit of languages, frameworks, and libraries I use to build scalable applications."
         />
 
         <div className="space-y-12">
@@ -111,53 +92,41 @@ export default function Skills() {
               viewport={{ once: true, margin: '-50px' }}
             >
               <div className="flex items-center gap-4 mb-8">
-                <h3 className="font-syne text-xl font-bold text-foreground/80 tracking-tight">
+                <div className="p-3 rounded-lg bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--primary)] shadow-sm">
+                  {group.icon}
+                </div>
+                <h3 className="font-syne text-xl font-bold text-[var(--foreground)] tracking-tight">
                   {group.category}
                 </h3>
-                <div className="h-px flex-1 bg-gradient-to-r from-primary/20 to-transparent" />
+                <div className="h-px flex-1 bg-[var(--card-border)]" />
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 {group.skills.map((skill, skillIndex) => (
                   <motion.div
                     key={skill.name}
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{
                       duration: 0.4,
                       delay: groupIndex * 0.05 + skillIndex * 0.03,
                     }}
                     viewport={{ once: true }}
-                    whileHover={{
-                      y: -5,
-                      boxShadow: `0 10px 30px -10px ${skill.color}40`,
-                    }}
-                    className="group relative flex flex-col items-center justify-center p-6 rounded-2xl glass border border-transparent hover:border-primary/20 transition-all duration-300 cursor-default"
+                    className="group relative flex flex-col items-center justify-center p-6 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-[var(--primary)] transition-all duration-300 cursor-default shadow-sm hover:shadow-md"
                   >
                     <div 
-                      className="relative w-16 h-16 mb-4 flex items-center justify-center rounded-2xl bg-white/5 group-hover:bg-white/10 transition-colors duration-500 shadow-inner"
+                      className="relative w-12 h-12 mb-4 flex items-center justify-center rounded-lg bg-[var(--section-bg)] group-hover:bg-[var(--primary)]/5 transition-colors duration-300"
                     >
                       <div 
-                        className="text-4xl transition-transform duration-500 group-hover:scale-110 relative z-10"
+                        className="text-3xl transition-transform duration-300 group-hover:scale-110"
                         style={{ color: skill.color }}
                       >
                         {skill.icon}
                       </div>
-                      {/* Glow effect */}
-                      <div 
-                        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"
-                        style={{ backgroundColor: skill.color }}
-                      />
                     </div>
-                    <span className="text-sm font-bold text-foreground/70 group-hover:text-foreground transition-colors tracking-tight">
+                    <span className="text-sm font-semibold text-[var(--muted)] group-hover:text-[var(--foreground)] transition-colors tracking-tight text-center">
                       {skill.name}
                     </span>
-                    
-                    {/* Subtle background glow on hover */}
-                    <div 
-                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity"
-                      style={{ backgroundColor: skill.color }}
-                    />
                   </motion.div>
                 ))}
               </div>

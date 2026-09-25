@@ -2,16 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, Github, Linkedin } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
+  { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
-  { name: 'Services', href: '#services' },
-  { name: 'Testimonials', href: '#testimonials' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Credentials', href: '#credentials' },
+  { name: 'CloudExify', href: '#cloudexify' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -58,12 +59,12 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'bg-[var(--background)]/80 backdrop-blur-xl border-b border-[var(--card-border)] shadow-lg shadow-black/5'
+            ? 'bg-[var(--background)]/90 backdrop-blur-md border-b border-[var(--card-border)] shadow-sm'
             : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+          <div className="flex items-center justify-between h-20 md:h-24">
             {/* Logo */}
             <motion.a
               href="#home"
@@ -71,16 +72,14 @@ export default function Navbar() {
                 e.preventDefault();
                 handleNavClick('#home');
               }}
-              className="relative group flex items-center gap-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="relative group flex items-center gap-3"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-primary to-accent p-[1px] shadow-[0_0_20px_rgba(0,212,255,0.2)]">
-                <div className="w-full h-full rounded-[11px] bg-[var(--background)] flex items-center justify-center">
-                  <span className="font-syne text-xl md:text-2xl font-bold text-gradient">M</span>
-                </div>
+              <div className="w-10 h-10 rounded-md bg-[var(--foreground)] flex items-center justify-center">
+                <span className="font-syne text-lg font-bold text-[var(--background)]">M</span>
               </div>
-              <span className="font-syne text-xl md:text-2xl font-bold tracking-tighter">
+              <span className="font-syne text-xl font-bold tracking-tight">
                 Hussain
               </span>
             </motion.a>
@@ -95,9 +94,9 @@ export default function Navbar() {
                     e.preventDefault();
                     handleNavClick(link.href);
                   }}
-                  className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-lg hover:text-primary ${
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-md hover:text-[var(--primary)] ${
                     activeSection === link.href.slice(1)
-                      ? 'text-primary'
+                      ? 'text-[var(--primary)]'
                       : 'text-[var(--muted)]'
                   }`}
                 >
@@ -105,7 +104,7 @@ export default function Navbar() {
                   {activeSection === link.href.slice(1) && (
                     <motion.span
                       layoutId="activeNav"
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
+                      className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[var(--primary)]"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -114,13 +113,11 @@ export default function Navbar() {
             </div>
 
             {/* Right side actions */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               {/* Theme Toggle */}
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+              <button
                 onClick={toggleTheme}
-                className="p-2 rounded-xl glass hover:border-primary/30 transition-all duration-200"
+                className="p-2 rounded-md border border-[var(--card-border)] bg-[var(--card-bg)] hover:bg-[var(--section-bg)] transition-colors duration-200"
                 aria-label="Toggle theme"
               >
                 <AnimatePresence mode="wait">
@@ -132,7 +129,7 @@ export default function Navbar() {
                       exit={{ rotate: 90, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Sun className="w-4 h-4 text-yellow-400" />
+                      <Sun className="w-4 h-4 text-[var(--foreground)]" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -142,35 +139,52 @@ export default function Navbar() {
                       exit={{ rotate: -90, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Moon className="w-4 h-4 text-indigo-500" />
+                      <Moon className="w-4 h-4 text-[var(--foreground)]" />
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.button>
+              </button>
+
+              {/* Social Links */}
+              <div className="hidden lg:flex items-center gap-2">
+                <a
+                  href="https://github.com/Mustafahussaindumra798cv"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                >
+                  <Github className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/mustafa-hussain-a29977356/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 text-[var(--muted)] hover:text-[#0a66c2] transition-colors"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+              </div>
 
               {/* Hire Me CTA */}
-              <motion.a
+              <a
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
                   handleNavClick('#contact');
                 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="hidden md:inline-flex items-center px-5 py-2 text-sm font-semibold rounded-xl bg-gradient-to-r from-primary/10 to-accent/10 text-primary border border-primary/30 hover:border-primary/60 hover:shadow-[0_0_20px_rgba(0,212,255,0.2)] transition-all duration-300 animate-glow-pulse"
+                className="hidden md:inline-flex items-center px-6 py-2.5 text-sm font-medium rounded-md bg-[var(--primary)] text-white hover:bg-[var(--primary)]/90 transition-colors shadow-sm"
               >
-                Hire Me
-              </motion.a>
+                Let's Connect
+              </a>
 
               {/* Mobile Menu Toggle */}
-              <motion.button
-                whileTap={{ scale: 0.9 }}
+              <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="lg:hidden p-2 rounded-xl glass"
+                className="lg:hidden p-2 rounded-md border border-[var(--card-border)] bg-[var(--card-bg)] text-[var(--foreground)]"
                 aria-label="Toggle menu"
               >
                 {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </motion.button>
+              </button>
             </div>
           </div>
         </div>
@@ -180,58 +194,41 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 lg:hidden pt-20"
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 lg:hidden pt-24 px-4 bg-[var(--background)]/95 backdrop-blur-md"
           >
-            <div
-              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-              onClick={() => setIsOpen(false)}
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="relative mx-4 mt-2 p-6 rounded-2xl glass-strong"
-            >
-              <div className="flex flex-col gap-2">
-                {navLinks.map((link, i) => (
-                  <motion.a
-                    key={link.name}
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(link.href);
-                    }}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    className={`px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${
-                      activeSection === link.href.slice(1)
-                        ? 'text-primary bg-primary/10'
-                        : 'text-[var(--muted)] hover:text-foreground hover:bg-white/5'
-                    }`}
-                  >
-                    {link.name}
-                  </motion.a>
-                ))}
-                <motion.a
-                  href="#contact"
+            <div className="flex flex-col gap-1 bg-[var(--card-bg)] border border-[var(--card-border)] rounded-xl p-4 shadow-lg">
+              {navLinks.map((link, i) => (
+                <a
+                  key={link.name}
+                  href={link.href}
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavClick('#contact');
+                    handleNavClick(link.href);
                   }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navLinks.length * 0.05 }}
-                  className="mt-2 px-4 py-3 rounded-xl text-center font-semibold bg-gradient-to-r from-primary to-accent text-white"
+                  className={`px-4 py-3 rounded-md text-sm font-medium transition-colors ${
+                    activeSection === link.href.slice(1)
+                      ? 'text-[var(--primary)] bg-[var(--primary)]/5'
+                      : 'text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--section-bg)]'
+                  }`}
                 >
-                  Hire Me
-                </motion.a>
-              </div>
-            </motion.div>
+                  {link.name}
+                </a>
+              ))}
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('#contact');
+                }}
+                className="mt-4 px-4 py-3 rounded-md text-center text-sm font-medium bg-[var(--primary)] text-white"
+              >
+                Let's Connect
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

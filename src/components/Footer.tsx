@@ -13,9 +13,11 @@ const socialLinks = [
 const footerLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
+  { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
-  { name: 'Services', href: '#services' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Credentials', href: '#credentials' },
+  { name: 'CloudExify', href: '#cloudexify' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -39,16 +41,13 @@ export default function Footer() {
               onClick={(e) => { e.preventDefault(); handleClick('#home'); }}
               className="inline-flex items-center gap-2 mb-6 group"
             >
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-accent p-[1px]">
-                <div className="w-full h-full rounded-[15px] bg-[var(--background)] flex items-center justify-center">
-                  <span className="font-syne text-2xl font-bold text-gradient">M</span>
-                </div>
+              <div className="w-12 h-12 rounded-lg bg-[var(--foreground)] flex items-center justify-center">
+                <span className="font-syne text-2xl font-bold text-[var(--background)]">M</span>
               </div>
               <span className="font-syne text-2xl font-bold tracking-tighter">Hussain</span>
             </motion.a>
-            <p className="text-[var(--muted)] text-base leading-relaxed max-w-sm mb-8">
-              Crafting intelligent digital experiences at the intersection of design and technology. 
-              Specializing in AI-integrated web solutions.
+            <p className="text-[var(--muted)] text-sm leading-relaxed max-w-sm mb-8">
+              Python Developer & AI/ML Engineering Enthusiast. Building practical software, intelligent applications, and scalable digital products.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
@@ -58,7 +57,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ y: -5, scale: 1.1 }}
-                  className="w-12 h-12 rounded-2xl glass flex items-center justify-center text-[var(--muted)] hover:text-primary hover:border-primary/40 transition-all duration-300"
+                  className="w-12 h-12 rounded-lg border border-[var(--card-border)] bg-[var(--card-bg)] flex items-center justify-center text-[var(--muted)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all duration-300 shadow-sm"
                   aria-label={social.label}
                 >
                   <social.icon className="w-5 h-5" />
@@ -113,7 +112,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-20 pt-8 border-t border-primary/5 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-sm text-[var(--muted)] font-medium">
-            © {new Date().getFullYear()} Mustafa Hussain. Designed with <Heart className="inline-block w-4 h-4 text-red-500 animate-pulse" /> for the web.
+            © {new Date().getFullYear()} Mustafa Hussain. Python Developer & AI Enthusiast.
           </p>
           <div className="flex gap-8 text-sm text-[var(--muted)]">
             <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>

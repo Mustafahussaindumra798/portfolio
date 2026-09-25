@@ -3,13 +3,24 @@
 import { motion } from 'framer-motion';
 import SectionHeader from './SectionHeader';
 import AnimatedCounter from './AnimatedCounter';
-import { Code2, Briefcase, Users, Calendar } from 'lucide-react';
+import { Code2, BrainCircuit, Rocket } from 'lucide-react';
 
-const stats = [
-  { end: 8, suffix: '+', label: 'Projects Completed', icon: Code2 },
-  { end: 14, suffix: '+', label: 'Technologies Known', icon: Briefcase },
-  { end: 6, suffix: '+', label: 'Happy Clients', icon: Users },
-  { end: 1, suffix: '+ Year', label: 'Experience', icon: Calendar },
+const focuses = [
+  {
+    title: 'Software Development',
+    description: 'Building responsive, scalable web applications with Next.js, Python, and modern architectures.',
+    icon: Code2,
+  },
+  {
+    title: 'Artificial Intelligence',
+    description: 'Exploring machine learning models, predictive analytics, and integrating LLMs into practical tools.',
+    icon: BrainCircuit,
+  },
+  {
+    title: 'Tech Leadership',
+    description: 'Managing operations and driving product vision as Co-Founder & COO at CloudExify.',
+    icon: Rocket,
+  },
 ];
 
 export default function About() {
@@ -19,8 +30,8 @@ export default function About() {
       <div className="relative max-w-7xl mx-auto">
         <SectionHeader
           subtitle="// About Me"
-          title="Who I Am"
-          description="A passionate developer crafting digital experiences that make a difference."
+          title="More Than Just Code."
+          description="A Software Engineering student dedicated to bridging the gap between theoretical computer science and practical, business-ready applications."
         />
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -33,25 +44,22 @@ export default function About() {
           >
             <div className="space-y-5">
               <p className="text-[var(--muted)] text-base md:text-lg leading-relaxed">
-                I&apos;m <span className="text-primary font-semibold">Mustafa Hussain</span>, a
-                BSc Software Engineering student with 1 year of professional experience in building
-                innovative web solutions. I specialize in full-stack development using
-                modern technologies like <span className="text-primary">React</span>,{' '}
-                <span className="text-primary">Next.js</span>, and{' '}
-                <span className="text-primary">Node.js</span>.
+                I am <span className="text-primary font-semibold">Mustafa Hussain</span>, a
+                Software Engineering student with a deep passion for building
+                intelligent systems. I specialize in <span className="text-primary">Python Development</span>,{' '}
+                <span className="text-primary">Full-Stack Web Architectures</span>, and integrating{' '}
+                <span className="text-primary">AI Models</span> into everyday applications.
               </p>
               <p className="text-[var(--muted)] text-base md:text-lg leading-relaxed">
-                Beyond web development, I&apos;m deeply interested in{' '}
-                <span className="text-accent-300">AI chatbot development</span> and
-                creating intelligent systems that enhance user experiences. I believe
-                in writing clean, maintainable code and building products that solve
-                real-world problems.
+                Beyond my academic coursework, I focus on{' '}
+                <span className="text-accent">practical application and continuous learning</span>. 
+                Whether I am engineering a robust backend for a new web app, training predictive models, 
+                or streamlining prompt engineering workflows, I am driven by the desire to create technology that actually matters.
               </p>
               <p className="text-[var(--muted)] text-base md:text-lg leading-relaxed">
-                When I&apos;m not coding, you&apos;ll find me exploring new technologies,
-                contributing to open-source projects, or helping businesses establish
-                their digital presence through custom WordPress solutions and modern
-                web applications.
+                As the <span className="text-primary">Co-Founder and COO of CloudExify</span>, I also 
+                manage operations, coordinate development teams, and help steer our product strategy 
+                to deliver scalable digital solutions to our clients.
               </p>
             </div>
 
@@ -63,11 +71,11 @@ export default function About() {
               viewport={{ once: true }}
               className="mt-8 flex flex-wrap gap-2"
             >
-              {['React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'AI/ML'].map(
+              {['Python', 'Next.js', 'Machine Learning', 'Data Science', 'React', 'TailwindCSS'].map(
                 (tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1 rounded-lg text-xs font-mono glass text-primary border border-primary/10"
+                    className="px-3 py-1 text-xs font-medium rounded-md border border-[var(--card-border)] bg-[var(--card-bg)] text-[var(--foreground)]"
                   >
                     {tech}
                   </span>
@@ -76,31 +84,30 @@ export default function About() {
             </motion.div>
           </motion.div>
 
-          {/* Right — Stats Grid */}
+          {/* Right — Focus Areas */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: '-50px' }}
-            className="grid grid-cols-2 gap-4"
+            className="flex flex-col gap-4"
           >
-            {stats.map((stat, i) => (
+            {focuses.map((focus, i) => (
               <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 30 }}
+                key={focus.title}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="group relative rounded-2xl glass p-6 hover:border-primary/20 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,212,255,0.08)]"
+                className="group flex gap-4 p-5 rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] hover:border-[var(--primary)] transition-all duration-300 shadow-sm hover:shadow-md"
               >
-                <div className="absolute top-4 right-4 text-primary/20 group-hover:text-primary/40 transition-colors">
-                  <stat.icon className="w-8 h-8" />
+                <div className="shrink-0 w-12 h-12 rounded-lg bg-[var(--primary)]/5 flex items-center justify-center text-[var(--primary)] group-hover:bg-[var(--primary)] group-hover:text-white transition-colors duration-300">
+                  <focus.icon className="w-6 h-6" />
                 </div>
-                <AnimatedCounter
-                  end={stat.end}
-                  suffix={stat.suffix}
-                  label={stat.label}
-                />
+                <div>
+                  <h4 className="text-[var(--foreground)] font-semibold mb-1">{focus.title}</h4>
+                  <p className="text-sm text-[var(--muted)] leading-relaxed">{focus.description}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
