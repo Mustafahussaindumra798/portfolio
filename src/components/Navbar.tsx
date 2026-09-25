@@ -174,7 +174,7 @@ export default function Navbar() {
                 }}
                 className="hidden md:inline-flex items-center px-6 py-2.5 text-sm font-medium rounded-md bg-[var(--primary)] text-white hover:bg-[var(--primary)]/90 transition-colors shadow-sm"
               >
-                Let's Connect
+                Let&apos;s Connect
               </a>
 
               {/* Mobile Menu Toggle */}
@@ -226,7 +226,7 @@ export default function Navbar() {
                 }}
                 className="mt-4 px-4 py-3 rounded-md text-center text-sm font-medium bg-[var(--primary)] text-white"
               >
-                Let's Connect
+                Let&apos;s Connect
               </a>
             </div>
           </motion.div>

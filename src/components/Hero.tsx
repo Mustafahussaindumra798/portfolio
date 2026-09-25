@@ -67,7 +67,7 @@ export default function Hero() {
                 }}
                 className="group inline-flex items-center gap-2 px-6 py-3 rounded-md border border-[var(--card-border)] bg-[var(--background)] text-[var(--foreground)] font-medium text-sm hover:bg-[var(--section-bg)] transition-all duration-300"
               >
-                Let's Talk
+                Let&apos;s Talk
               </a>
             </motion.div>
           </div>

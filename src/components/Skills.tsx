@@ -12,7 +12,6 @@ import {
   SiNodedotjs,
   SiPandas,
   SiScikitlearn,
-  SiOpenai,
   SiGit,
   SiDocker,
   SiVercel
@@ -58,7 +57,7 @@ const skillGroups: SkillGroup[] = [
       { name: 'Machine Learning', icon: <Brain />, color: '#8B5CF6' },
       { name: 'Pandas', icon: <SiPandas />, color: '#150458' },
       { name: 'Scikit-Learn', icon: <SiScikitlearn />, color: '#F7931E' },
-      { name: 'OpenAI API', icon: <SiOpenai />, color: '#412991' },
+      { name: 'OpenAI API', icon: <Brain />, color: '#412991' },
     ],
   },
   {
