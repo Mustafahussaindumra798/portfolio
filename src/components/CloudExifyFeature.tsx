@@ -1,7 +1,15 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Lightbulb, Users, Package, Briefcase, TrendingUp } from 'lucide-react';
+
+const funnel = [
+  { id: 'idea', icon: Lightbulb, label: 'IDEA', desc: 'Identifying market gaps.' },
+  { id: 'team', icon: Users, label: 'TEAM', desc: 'Building engineering talent.' },
+  { id: 'products', icon: Package, label: 'PRODUCTS', desc: 'Developing AI tools.' },
+  { id: 'clients', icon: Briefcase, label: 'CLIENTS', desc: 'Marketing & lead generation.' },
+  { id: 'growth', icon: TrendingUp, label: 'GROWTH', desc: 'Scaling operations.' },
+];
 
 export default function CloudExifyFeature() {
   return (
@@ -18,23 +26,25 @@ export default function CloudExifyFeature() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center gap-4 mb-8">
-                <span className="font-mono text-sm font-medium text-white/50">05</span>
+                <span className="font-mono text-sm font-medium text-white/50">06</span>
                 <div className="h-px w-12 bg-white/20" />
-                <h2 className="font-syne text-xl md:text-2xl font-bold tracking-tight uppercase">Product Leadership</h2>
+                <h2 className="font-syne text-xl md:text-2xl font-bold tracking-tight uppercase">Entrepreneurship</h2>
               </div>
               
               <h3 className="font-syne text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-[1.1]">
-                Building With CloudExify.
+                Building CloudExify.
               </h3>
               
               <div className="font-mono text-sm tracking-widest uppercase text-primary mb-8 font-semibold">
                 Co-Founder & COO
               </div>
               
-              <p className="text-white/70 text-lg leading-relaxed font-inter font-light mb-10">
-                At CloudExify, I drive the technical vision and operational execution. 
-                My focus is on transforming complex infrastructure and cloud challenges into seamless, 
-                scalable software products that empower modern businesses to operate with unparalleled efficiency.
+              <p className="text-white/70 text-base md:text-lg leading-relaxed font-inter font-light mb-6">
+                At CloudExify, I combine technical development with business operations. My responsibilities span Product Development, Operations, Marketing, Lead Generation, and Social Media Management.
+              </p>
+              
+              <p className="text-white/70 text-base md:text-lg leading-relaxed font-inter font-light mb-10">
+                It is an entrepreneurial environment where we build solutions and ensure they successfully reach clients, teaching me the entire lifecycle of a digital product.
               </p>
               
               <a 
@@ -52,23 +62,33 @@ export default function CloudExifyFeature() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full md:w-1/2"
+            className="w-full md:w-1/2 flex items-center justify-center"
           >
-            {/* Minimalist Abstract Representation of CloudExify Product */}
-            <div className="w-full aspect-square border border-white/10 bg-white/5 relative overflow-hidden flex items-center justify-center p-8 lg:p-12">
-              <div className="w-full h-full border border-white/10 relative flex flex-col">
-                <div className="h-12 border-b border-white/10 flex items-center px-6 gap-2">
-                  <div className="w-2 h-2 rounded-full bg-white/20" />
-                  <div className="w-2 h-2 rounded-full bg-white/20" />
-                </div>
-                <div className="flex-1 p-6 flex gap-6">
-                  <div className="w-1/3 h-full border border-white/10 bg-white/5" />
-                  <div className="flex-1 flex flex-col gap-6">
-                    <div className="h-1/2 border border-white/10 bg-white/5" />
-                    <div className="h-1/2 border border-white/10 bg-white/5" />
-                  </div>
-                </div>
-              </div>
+            <div className="w-full max-w-sm flex flex-col gap-0 relative">
+              {/* Connecting line */}
+              <div className="absolute left-8 md:left-[3.25rem] top-8 bottom-8 w-px bg-white/20" />
+
+              {funnel.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: i * 0.15 }}
+                    className="flex items-center gap-6 py-4 relative group"
+                  >
+                    <div className="w-16 h-16 shrink-0 rounded-full bg-foreground border border-white/20 flex items-center justify-center relative z-10 group-hover:border-primary group-hover:bg-primary/10 transition-colors">
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-syne font-bold text-lg text-white mb-1 tracking-wide">{item.label}</h4>
+                      <p className="font-inter font-light text-sm text-white/50">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
 

@@ -139,8 +139,29 @@ export default function AIChatbot() {
               )}
             </div>
 
+            {messages.length === 1 && (
+              <div className="px-6 pb-2">
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Tell me about CloudExify.",
+                    "What projects has Mustafa built?",
+                    "What is Mustafa currently learning?",
+                    "How can I contact Mustafa?"
+                  ].map((prompt, i) => (
+                    <button
+                      key={i}
+                      onClick={() => handleInputChange({ target: { value: prompt } } as any)}
+                      className="px-3 py-2 bg-white border border-gray-200 rounded-xl text-xs font-medium text-muted hover:border-primary hover:text-primary transition-colors text-left"
+                    >
+                      {prompt}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Input Area */}
-            <form onSubmit={handleSubmit} className="p-6 bg-white dark:bg-slate-800 border-t border-primary/5">
+            <form onSubmit={handleSubmit} className="p-6 pt-4 bg-white dark:bg-slate-800 border-t border-primary/5">
               <div className="relative group">
                 <input
                   type="text"

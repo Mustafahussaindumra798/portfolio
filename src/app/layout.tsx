@@ -42,6 +42,9 @@ export const metadata: Metadata = {
   },
 };
 
+import CommandCenter from '@/components/CommandCenter';
+import CustomCursor from '@/components/CustomCursor';
+
 export default function RootLayout({
   children,
 }: {
@@ -69,6 +72,8 @@ export default function RootLayout({
       </head>
       <body className="font-inter antialiased overflow-x-hidden">
         <ThemeProvider>
+          <CustomCursor />
+          <CommandCenter />
           <div className="relative min-h-screen selection:bg-primary/20 selection:text-primary">
             <div className="relative z-10 flex flex-col min-h-screen">
               <Navbar />

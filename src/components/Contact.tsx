@@ -47,21 +47,21 @@ export default function Contact() {
             >
               <div>
                 <p className="text-xs font-mono font-semibold text-primary uppercase tracking-widest mb-2">Email</p>
-                <a href="mailto:mustafahussaindumra798@gmail.com" className="font-syne text-xl md:text-2xl font-bold text-foreground hover:text-primary transition-colors">
-                  mustafahussaindumra798@gmail.com
+                <a href="mailto:coo@cloudexify.site" className="font-syne text-xl md:text-2xl font-bold text-foreground hover:text-primary transition-colors">
+                  coo@cloudexify.site
                 </a>
               </div>
               <div className="grid grid-cols-2 gap-8 mt-4">
                 <div>
                   <p className="text-xs font-mono font-semibold text-primary uppercase tracking-widest mb-2">Social</p>
                   <div className="flex flex-col gap-2">
-                    <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-muted hover:text-foreground font-medium transition-colors">LinkedIn</a>
-                    <a href="https://github.com" target="_blank" rel="noreferrer" className="text-muted hover:text-foreground font-medium transition-colors">GitHub</a>
+                    <a href="https://linkedin.com/in/mustafahussain" target="_blank" rel="noreferrer" className="text-muted hover:text-foreground font-medium transition-colors">LinkedIn</a>
+                    <a href="https://github.com/Mustafahussaindumra798" target="_blank" rel="noreferrer" className="text-muted hover:text-foreground font-medium transition-colors">GitHub</a>
                   </div>
                 </div>
                 <div>
                   <p className="text-xs font-mono font-semibold text-primary uppercase tracking-widest mb-2">Direct</p>
-                  <a href="https://wa.me/923400488902" target="_blank" rel="noreferrer" className="text-muted hover:text-foreground font-medium transition-colors">WhatsApp</a>
+                  <a href="https://wa.me/923059733783" target="_blank" rel="noreferrer" className="text-muted hover:text-foreground font-medium transition-colors">WhatsApp</a>
                 </div>
               </div>
             </motion.div>

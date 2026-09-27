@@ -2,8 +2,8 @@
 
 export default function Footer() {
   return (
-    <footer className="py-12 bg-white border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+    <footer className="py-12 bg-white">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 border-t border-gray-100 pt-12">
         
         {/* Left: Branding */}
         <div className="flex flex-col gap-2">
@@ -11,21 +11,19 @@ export default function Footer() {
             Mustafa Hussain
           </div>
           <p className="text-muted text-sm font-inter">
-            Software Engineer &middot; Full-Stack Developer &middot; AI/ML
+            AI Engineer in the Making &middot; Co-Founder & COO @ CloudExify
           </p>
         </div>
 
-        {/* Right: Links & Copyright */}
-        <div className="flex flex-col md:items-end gap-6">
-          <div className="flex flex-wrap gap-6 text-sm font-medium text-foreground">
-            <a href="#home" className="hover:text-primary transition-colors">Home</a>
-            <a href="#about" className="hover:text-primary transition-colors">About</a>
-            <a href="#work" className="hover:text-primary transition-colors">Work</a>
-            <a href="#experience" className="hover:text-primary transition-colors">Experience</a>
-            <a href="mailto:mustafahussaindumra798@gmail.com" className="hover:text-primary transition-colors">Email</a>
+        {/* Right: Links & Tagline */}
+        <div className="flex flex-col md:items-end gap-4">
+          <div className="flex flex-wrap gap-6 text-sm font-mono uppercase tracking-widest text-muted">
+            <a href="https://github.com/Mustafahussaindumra798" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">GitHub</a>
+            <a href="https://linkedin.com/in/mustafahussain" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>
+            <a href="mailto:coo@cloudexify.site" className="hover:text-foreground transition-colors">Email</a>
           </div>
-          <p className="text-xs text-muted font-inter">
-            &copy; {new Date().getFullYear()} Mustafa Hussain. All rights reserved.
+          <p className="text-xs text-muted font-syne font-bold uppercase tracking-widest mt-2">
+            Building. Learning. Shipping.
           </p>
         </div>
 

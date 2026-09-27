@@ -2,15 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Command } from 'lucide-react';
 import Link from 'next/link';
 
 const navLinks = [
+  { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'AI Lab', href: '#ailab' },
   { name: 'Experience', href: '#experience' },
-  { name: 'Projects', href: '#work' },
-  { name: 'Certificates', href: '#certificates' },
+  { name: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar() {
@@ -27,9 +29,13 @@ export default function Navbar() {
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+    if (href.startsWith('#')) {
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.location.href = href;
     }
   };
 
@@ -41,9 +47,9 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-white/80 backdrop-blur-xl border-b border-gray-100 py-4 shadow-[0_4px_30px_rgba(0,0,0,0.03)]'
-            : 'bg-transparent py-6'
-        } dark:bg-transparent dark:border-none`}
+            ? 'bg-white/80 backdrop-blur-xl border-b border-gray-100 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.03)]'
+            : 'bg-transparent py-5'
+        }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
           <div className="flex items-center justify-between">
@@ -66,7 +72,7 @@ export default function Navbar() {
             </a>
 
             {/* Desktop Nav */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-6">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -75,7 +81,7 @@ export default function Navbar() {
                     e.preventDefault();
                     handleNavClick(link.href);
                   }}
-                  className="text-sm font-medium text-muted hover:text-foreground transition-colors"
+                  className="text-xs font-medium text-muted hover:text-foreground transition-colors uppercase tracking-wider font-mono"
                 >
                   {link.name}
                 </a>
@@ -83,16 +89,27 @@ export default function Navbar() {
               
               <div className="w-px h-4 bg-gray-200 ml-2" />
               
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('#contact');
-                }}
-                className="text-sm font-semibold text-white bg-foreground px-5 py-2.5 hover:bg-primary transition-colors"
-              >
-                Let&apos;s Talk
-              </a>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
+                  className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-md text-xs font-mono text-muted hover:text-foreground hover:border-gray-300 transition-colors"
+                >
+                  <Command className="w-3 h-3" />
+                  <span>K</span>
+                </button>
+                <a
+                  href="/resume"
+                  className="text-xs font-semibold text-foreground border border-gray-200 px-4 py-2 hover:bg-gray-50 transition-colors"
+                >
+                  Resume
+                </a>
+                <button
+                  onClick={() => document.querySelector('.group.flex.items-center.justify-center.overflow-hidden')?.dispatchEvent(new MouseEvent('click', { bubbles: true }))}
+                  className="text-xs font-semibold text-white bg-foreground px-4 py-2 hover:bg-primary transition-colors"
+                >
+                  Ask My AI
+                </button>
+              </div>
             </div>
 
             {/* Mobile Toggle */}
@@ -126,22 +143,27 @@ export default function Navbar() {
                     e.preventDefault();
                     handleNavClick(link.href);
                   }}
-                  className="font-syne text-4xl font-bold text-foreground hover:text-primary transition-colors"
+                  className="font-syne text-3xl font-bold text-foreground hover:text-primary transition-colors uppercase tracking-tight"
                 >
                   {link.name}
                 </a>
               ))}
               <div className="w-12 h-px bg-gray-200 my-4" />
               <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('#contact');
+                href="/resume"
+                className="font-inter text-lg font-semibold text-foreground mb-2"
+              >
+                Download Resume &rarr;
+              </a>
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  document.querySelector('.group.flex.items-center.justify-center.overflow-hidden')?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
                 }}
                 className="font-inter text-lg font-semibold text-primary"
               >
-                Let&apos;s Talk &rarr;
-              </a>
+                Ask My AI &rarr;
+              </button>
             </div>
           </motion.div>
         )}

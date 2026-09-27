@@ -1,8 +1,39 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+
+const dimensions = [
+  {
+    id: 'build',
+    title: 'BUILD',
+    headline: 'Building real applications.',
+    content: 'I build websites, AI-powered applications, and digital products using Python, JavaScript, and modern web technologies. I focus on deploying robust, scalable products that solve actual problems.',
+  },
+  {
+    id: 'learn',
+    title: 'LEARN',
+    headline: 'Continuous progression toward AI Engineering.',
+    content: 'Currently a Software Engineering student at COMSATS University Islamabad (Wah Campus). I am systematically learning Machine Learning, Deep Learning, and AI architectures to transition from application developer to AI Engineer.',
+  },
+  {
+    id: 'operate',
+    title: 'OPERATE',
+    headline: 'Business operations and leadership.',
+    content: 'As Co-Founder & COO at CloudExify, I oversee business operations, product lifecycles, and team coordination. I have practical leadership experience serving as a Site Supervisor for internship programs.',
+  },
+  {
+    id: 'grow',
+    title: 'GROW',
+    headline: 'Marketing and digital presence.',
+    content: 'I expand beyond code by working with marketing strategies, lead generation, and social media management to ensure the products we build actually reach and resonate with users.',
+  }
+];
 
 export default function About() {
+  const [activeDimension, setActiveDimension] = useState(dimensions[0].id);
+
   return (
     <section id="about" className="py-24 md:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
@@ -21,9 +52,18 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h3 className="font-syne text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-[1.2] tracking-tight">
-              Learning, building, and leading in the world of intelligent software.
+            <h3 className="font-syne text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-[1.2] tracking-tight mb-8">
+              More Than Just Code.
             </h3>
+            
+            <div className="relative w-full aspect-[4/5] bg-section-bg border border-gray-100 overflow-hidden shadow-sm">
+              <Image 
+                src="/profile.jpg" 
+                alt="Mustafa Hussain" 
+                fill 
+                className="object-cover object-top grayscale-[15%] hover:grayscale-0 transition-all duration-700"
+              />
+            </div>
           </motion.div>
 
           <motion.div
@@ -31,35 +71,47 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col gap-8 text-muted text-base md:text-lg leading-relaxed font-inter font-light"
+            className="flex flex-col justify-center"
           >
-            <p>
-              I am a Software Engineering student at COMSATS University Islamabad (Wah Campus). I am continuously learning and experimenting with technologies that move me toward my long-term goal of becoming an AI Engineer.
-            </p>
-            <p>
-              Beyond the classroom, I have gained substantial organizational and product experience as the Co-Founder & COO at CloudExify, and practical leadership experience serving as a Site Supervisor for the CloudExify Internship 2026 program.
-            </p>
-            <p>
-              My current technical focus includes Python development, Java OOP, C++, and exploring how AI can be integrated into practical products using modern web frameworks and Vibe Coding workflows.
-            </p>
+            <div className="flex flex-wrap gap-4 mb-12">
+              {dimensions.map((dim) => (
+                <button
+                  key={dim.id}
+                  onClick={() => setActiveDimension(dim.id)}
+                  className={`font-mono text-xs sm:text-sm font-bold tracking-widest px-4 py-2 border transition-all duration-300 ${
+                    activeDimension === dim.id 
+                      ? 'bg-foreground text-background border-foreground' 
+                      : 'bg-transparent text-muted border-gray-200 hover:border-foreground hover:text-foreground'
+                  }`}
+                >
+                  {dim.title}
+                </button>
+              ))}
+            </div>
 
-            <div className="pt-8 border-t border-gray-200 mt-4 grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-12">
-              <div className="flex flex-col gap-1">
-                <span className="text-primary font-mono text-xs font-bold">01</span>
-                <span className="font-semibold text-foreground text-sm uppercase tracking-wider">Python Development</span>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-primary font-mono text-xs font-bold">02</span>
-                <span className="font-semibold text-foreground text-sm uppercase tracking-wider">AI Product Development</span>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-primary font-mono text-xs font-bold">03</span>
-                <span className="font-semibold text-foreground text-sm uppercase tracking-wider">Java OOP & C++</span>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-primary font-mono text-xs font-bold">04</span>
-                <span className="font-semibold text-foreground text-sm uppercase tracking-wider">Product Leadership</span>
-              </div>
+            <div className="min-h-[200px] relative">
+              <AnimatePresence mode="wait">
+                {dimensions.map((dim) => {
+                  if (dim.id !== activeDimension) return null;
+                  return (
+                    <motion.div
+                      key={dim.id}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute inset-0"
+                    >
+                      <h4 className="font-syne text-2xl md:text-3xl font-bold text-foreground mb-6">
+                        {dim.headline}
+                      </h4>
+                      <p className="text-muted text-base md:text-lg leading-relaxed font-inter font-light">
+                        {dim.content}
+                      </p>
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
             </div>
           </motion.div>
 

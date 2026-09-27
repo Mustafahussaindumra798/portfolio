@@ -1,11 +1,15 @@
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import Projects from '@/components/Projects';
-import Skills from '@/components/Skills';
-import Experience from '@/components/Experience';
-import CloudExifyFeature from '@/components/CloudExifyFeature';
-import Certificates from '@/components/Certificates';
 import Roadmap from '@/components/Roadmap';
+import BeyondCode from '@/components/BeyondCode';
+import Skills from '@/components/Skills';
+import Projects from '@/components/Projects';
+import AILab from '@/components/AILab';
+import CloudExifyFeature from '@/components/CloudExifyFeature';
+import Experience from '@/components/Experience';
+import Certificates from '@/components/Certificates';
+import GithubProfile from '@/components/GithubProfile';
+import CurrentlyBuilding from '@/components/CurrentlyBuilding';
 import Contact from '@/components/Contact';
 
 export default function Home() {
@@ -13,12 +17,16 @@ export default function Home() {
     <>
       <Hero />
       <About />
-      <Projects />
-      <Skills />
-      <Experience />
-      <CloudExifyFeature />
-      <Certificates />
       <Roadmap />
+      <BeyondCode />
+      <Skills />
+      <Projects />
+      <AILab />
+      <CloudExifyFeature />
+      <Experience />
+      <Certificates />
+      <GithubProfile />
+      <CurrentlyBuilding />
       <Contact />
     </>
   );
