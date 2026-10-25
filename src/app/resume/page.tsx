@@ -1,4 +1,4 @@
-import { ArrowLeft, Download, Mail, MapPin, Globe, Github, Linkedin, BriefcaseBusiness, GraduationCap } from 'lucide-react';
+import { ArrowLeft, Download, Mail, MapPin, Globe, Github, Linkedin, Briefcase, GraduationCap } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata = {
@@ -113,7 +113,7 @@ export default function ResumePage() {
             <section>
               <h2 className="font-syne text-xl font-bold mb-3 pb-2 border-b border-[var(--card-border)]">Experience</h2>
               <div className="flex gap-3">
-                <BriefcaseBusiness className="w-5 h-5 text-primary shrink-0 mt-1" />
+                <Briefcase className="w-5 h-5 text-primary shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold">Co-Founder &amp; Chief Operating Officer — CloudExify</h3>
                   <p className="text-xs text-primary mt-1">March 2026 – Present</p>
