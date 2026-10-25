@@ -166,7 +166,7 @@ export default function ResumePage() {
         </div>
       </article>
 
-      <style jsx global>{`
+      <style>{`
         @page { size: A4; margin: 12mm; }
         @media print {
           html, body { background: #fff !important; color: #111827 !important; }
