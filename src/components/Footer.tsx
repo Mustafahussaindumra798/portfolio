@@ -19,7 +19,7 @@ export default function Footer() {
         <div className="flex flex-col md:items-end gap-4">
           <div className="flex flex-wrap gap-6 text-sm font-mono uppercase tracking-widest text-muted">
             <a href="https://github.com/Mustafahussaindumra798" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">GitHub</a>
-            <a href="https://linkedin.com/in/mustafahussain" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/mustafa-hussain-a29977356/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>
             <a href="mailto:coo@cloudexify.site" className="hover:text-foreground transition-colors">Email</a>
           </div>
           <p className="text-xs text-muted font-syne font-bold uppercase tracking-widest mt-2">
