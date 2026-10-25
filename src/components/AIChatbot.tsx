@@ -41,6 +41,8 @@ export default function AIChatbot() {
     return () => window.removeEventListener('portfolio:open-ai-chat', openChat);
   }, []);
 
+  if (process.env.NEXT_PUBLIC_GITHUB_PAGES === 'true') return null;
+
   return (
     <>
       <div className="fixed bottom-24 right-6 z-50 flex flex-col items-end gap-4">
