@@ -1,194 +1,183 @@
-import { ArrowLeft, Download, Mail, MapPin, Globe } from 'lucide-react';
+import { ArrowLeft, Download, Mail, MapPin, Globe, Github, Linkedin, BriefcaseBusiness, GraduationCap } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Resume | Mustafa Hussain - AI/ML Engineer',
-  description: 'Professional resume of Mustafa Hussain, Enterprise AI/ML Engineer and Technical Executive.',
+  title: 'Resume | Mustafa Hussain',
+  description: 'Resume of Mustafa Hussain, BS Software Engineering student, Python developer, AI application builder, and Co-Founder & COO at CloudExify.',
 };
+
+const projects = [
+  {
+    name: 'Restro AI',
+    type: 'Restaurant management / POS project',
+    details: 'Worked on a restaurant-focused application with menu, table, and order-management workflows.',
+    link: 'https://restro-ai-2crv.vercel.app/',
+  },
+  {
+    name: 'Vital Fitness Gym Website',
+    type: 'Business website',
+    details: 'Built a gym website experience to present services, membership options, and contact information.',
+    link: 'https://vital-gym-bqlm.vercel.app/',
+  },
+  {
+    name: 'Dental Clinic Website',
+    type: 'Business website',
+    details: 'Created a website for a dental clinic with service information and a clear contact path.',
+    link: 'https://dental-462u.vercel.app/',
+  },
+  {
+    name: 'Medi Finder AI',
+    type: 'Hackathon project',
+    details: 'Contributed to a health-assistant concept focused on prescription scanning, medicine alternatives, interaction checks, and Urdu/English support.',
+    link: '',
+  },
+];
 
 export default function ResumePage() {
   return (
-    <div className="min-h-screen bg-[var(--background)] py-12 px-4 sm:px-6 lg:px-8 font-inter text-[var(--foreground)] selection:bg-primary/30 selection:text-primary-foreground">
-      
-      {/* Controls Container (Hidden in print) */}
-      <div className="max-w-4xl mx-auto mb-8 flex justify-between items-center print:hidden">
-        <Link 
-          href="/" 
-          className="inline-flex items-center gap-2 text-[var(--muted)] hover:text-primary transition-colors text-sm font-medium"
-        >
+    <main className="min-h-screen bg-[var(--background)] py-8 px-4 sm:px-6 lg:px-8 font-inter text-[var(--foreground)]">
+      <div className="max-w-4xl mx-auto mb-6 flex flex-wrap justify-between items-center gap-4 print:hidden">
+        <Link href="/" className="inline-flex items-center gap-2 text-[var(--muted)] hover:text-primary transition-colors text-sm font-medium">
           <ArrowLeft className="w-4 h-4" /> Back to Portfolio
         </Link>
-        <a 
-          href="javascript:window.print()"
+        <button
+          type="button"
+          onClick={() => window.print()}
           className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-colors"
         >
           <Download className="w-4 h-4" /> Print / Save as PDF
-        </a>
+        </button>
       </div>
 
-      {/* Resume Document (A4 format roughly) */}
-      <div className="max-w-4xl mx-auto bg-[var(--card-bg)] border border-[var(--card-border)] rounded-2xl shadow-2xl overflow-hidden print:shadow-none print:border-none print:rounded-none bg-white dark:bg-slate-900">
-        
-        {/* Header */}
-        <header className="px-10 py-12 border-b border-primary/10">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+      <article className="max-w-4xl mx-auto bg-[var(--card-bg)] border border-[var(--card-border)] rounded-2xl shadow-xl overflow-hidden print:shadow-none print:border-none print:rounded-none">
+        <header className="px-6 py-8 sm:px-10 sm:py-10 border-b border-primary/10">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-6">
             <div>
-              <h1 className="font-syne text-4xl md:text-5xl font-bold text-foreground mb-2 tracking-tight">
+              <h1 className="font-syne text-4xl sm:text-5xl font-bold mb-2 tracking-tight">
                 Mustafa <span className="text-primary">Hussain</span>
               </h1>
-              <h2 className="text-xl text-[var(--muted)] font-medium">
-                Enterprise AI/ML Engineer & Technical Executive
-              </h2>
+              <p className="text-lg sm:text-xl text-[var(--muted)] font-medium">
+                BS Software Engineering Student | Python Developer | AI Application Builder
+              </p>
+              <p className="mt-2 text-sm text-[var(--muted)]">Co-Founder &amp; COO at CloudExify</p>
             </div>
-            <div className="flex flex-col gap-2 text-sm text-[var(--muted)]">
+            <div className="flex flex-col gap-3 text-sm text-[var(--muted)]">
+              <a href="mailto:coo@cloudexify.site" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Mail className="w-4 h-4 text-primary" /> coo@cloudexify.site
+              </a>
+              <a href="https://portfolio-vznd.vercel.app/" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Globe className="w-4 h-4 text-primary" /> Portfolio website
+              </a>
+              <a href="https://github.com/Mustafahussaindumra798" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Github className="w-4 h-4 text-primary" /> GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/mustafa-hussain-a29977356/" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Linkedin className="w-4 h-4 text-primary" /> LinkedIn
+              </a>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-primary" /> 
-                <a href="mailto:contact@mustafahussain.com" className="hover:text-primary transition-colors">contact@mustafahussain.com</a>
-              </div>
-              <div className="flex items-center gap-2">
-                <Globe className="w-4 h-4 text-primary" /> 
-                <a href="https://mustafa-hussain.vercel.app" className="hover:text-primary transition-colors">mustafa-hussain.vercel.app</a>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-primary" /> 
-                <span>Global / Pakistan (Remote)</span>
+                <MapPin className="w-4 h-4 text-primary" /> Islamabad, Pakistan
               </div>
             </div>
           </div>
         </header>
 
-        {/* Content Body */}
-        <div className="px-10 py-12 grid grid-cols-1 md:grid-cols-[1fr,300px] gap-12">
-          
-          {/* Main Column */}
-          <div className="space-y-10">
-            
+        <div className="px-6 py-8 sm:px-10 sm:py-10 grid grid-cols-1 md:grid-cols-[1fr,260px] gap-10">
+          <div className="space-y-9">
             <section>
-              <h3 className="font-syne text-2xl font-bold text-foreground mb-4 pb-2 border-b border-[var(--card-border)] flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-primary" /> Professional Summary
-              </h3>
-              <p className="text-[var(--muted)] leading-relaxed text-sm md:text-base">
-                Technical leader and Enterprise AI/ML Engineer with a proven track record of architecting 
-                and deploying scalable, intelligent systems. Specialized in developing predictive analytics engines, 
-                integrating Large Language Models (LLMs) with custom RAG architectures, and establishing robust 
-                MLOps pipelines. Passionate about transforming complex business challenges into data-driven, 
-                automated solutions that deliver measurable ROI.
+              <h2 className="font-syne text-xl font-bold mb-3 pb-2 border-b border-[var(--card-border)]">Professional Summary</h2>
+              <p className="text-sm leading-7 text-[var(--muted)]">
+                Software Engineering student focused on Python development and building practical web and AI-powered applications. As Co-Founder &amp; COO at CloudExify, I support operations, outreach, social media, and the development of websites and digital products for businesses. I am continuing to build my foundations in AI engineering and application integration.
               </p>
             </section>
 
             <section>
-              <h3 className="font-syne text-2xl font-bold text-foreground mb-6 pb-2 border-b border-[var(--card-border)] flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-primary" /> Key Enterprise Projects
-              </h3>
-              
-              <div className="space-y-8">
-                <div>
-                  <div className="flex justify-between items-start mb-2">
-                    <h4 className="text-lg font-bold text-foreground">Enterprise Knowledge Graph Platform</h4>
-                    <span className="text-xs font-mono text-primary bg-primary/10 px-2 py-1 rounded">2025</span>
+              <h2 className="font-syne text-xl font-bold mb-4 pb-2 border-b border-[var(--card-border)]">Selected Projects</h2>
+              <div className="space-y-5">
+                {projects.map((project) => (
+                  <div key={project.name}>
+                    <div className="flex flex-wrap items-baseline justify-between gap-2">
+                      <h3 className="font-semibold">{project.name}</h3>
+                      <span className="text-xs text-primary">{project.type}</span>
+                    </div>
+                    <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{project.details}</p>
+                    {project.link && (
+                      <a href={project.link} target="_blank" rel="noreferrer" className="mt-1 inline-block text-xs font-semibold text-primary hover:underline">
+                        View project ↗
+                      </a>
+                    )}
                   </div>
-                  <p className="text-sm font-medium text-[var(--muted)] mb-3">Neo4j, PyTorch, HuggingFace, FastAPI</p>
-                  <ul className="list-disc list-outside ml-4 text-sm text-[var(--muted)] space-y-2">
-                    <li>Architected a highly scalable knowledge graph to extract and visualize entity relationships across millions of corporate documents.</li>
-                    <li>Utilized custom NLP pipelines via HuggingFace to perform named entity recognition (NER) with 94% accuracy.</li>
-                    <li>Designed high-throughput API layer in FastAPI resulting in sub-50ms query responses.</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <div className="flex justify-between items-start mb-2">
-                    <h4 className="text-lg font-bold text-foreground">Autonomous RAG Support Agent</h4>
-                    <span className="text-xs font-mono text-primary bg-primary/10 px-2 py-1 rounded">2025</span>
-                  </div>
-                  <p className="text-sm font-medium text-[var(--muted)] mb-3">LangChain, OpenAI, Pinecone, Next.js</p>
-                  <ul className="list-disc list-outside ml-4 text-sm text-[var(--muted)] space-y-2">
-                    <li>Developed state-of-the-art LLM-powered support agent utilizing Retrieval-Augmented Generation to reference internal corporate documentation.</li>
-                    <li>Reduced human customer support workload by 40% within the first quarter of deployment.</li>
-                    <li>Implemented semantic caching and vector database indexing (Pinecone) to drastically reduce token costs.</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <div className="flex justify-between items-start mb-2">
-                    <h4 className="text-lg font-bold text-foreground">Predictive Analytics & Forecasting</h4>
-                    <span className="text-xs font-mono text-primary bg-primary/10 px-2 py-1 rounded">2024</span>
-                  </div>
-                  <p className="text-sm font-medium text-[var(--muted)] mb-3">XGBoost, Pandas, AWS SageMaker</p>
-                  <ul className="list-disc list-outside ml-4 text-sm text-[var(--muted)] space-y-2">
-                    <li>Built real-time predictive models using gradient boosting and time-series forecasting to optimize global supply chains.</li>
-                    <li>Automated the entire ML lifecycle from data ingestion to model deployment using AWS SageMaker pipelines.</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-          </div>
-
-          {/* Sidebar */}
-          <div className="space-y-10">
-            
-            <section>
-              <h3 className="font-syne text-xl font-bold text-foreground mb-4 pb-2 border-b border-[var(--card-border)]">
-                Core Competencies
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {['Machine Learning', 'AI Strategy', 'Predictive Analytics', 'LLM Integration', 'Computer Vision', 'MLOps', 'Technical Leadership'].map(skill => (
-                  <span key={skill} className="px-3 py-1 bg-primary/5 text-primary text-xs font-bold rounded-lg border border-primary/10">
-                    {skill}
-                  </span>
                 ))}
               </div>
             </section>
 
             <section>
-              <h3 className="font-syne text-xl font-bold text-foreground mb-4 pb-2 border-b border-[var(--card-border)]">
-                Technical Arsenal
-              </h3>
-              <div className="space-y-4">
+              <h2 className="font-syne text-xl font-bold mb-3 pb-2 border-b border-[var(--card-border)]">Experience</h2>
+              <div className="flex gap-3">
+                <BriefcaseBusiness className="w-5 h-5 text-primary shrink-0 mt-1" />
                 <div>
-                  <h4 className="text-sm font-bold text-foreground mb-2">Frameworks & Libraries</h4>
-                  <p className="text-sm text-[var(--muted)] leading-relaxed">PyTorch, TensorFlow, Keras, Scikit-Learn, Pandas, NumPy, LangChain</p>
+                  <h3 className="font-semibold">Co-Founder &amp; Chief Operating Officer — CloudExify</h3>
+                  <p className="text-xs text-primary mt-1">March 2026 – Present</p>
+                  <ul className="mt-2 list-disc list-outside ml-4 space-y-1 text-sm leading-6 text-[var(--muted)]">
+                    <li>Support day-to-day operations and coordination for a digital solutions initiative.</li>
+                    <li>Contribute to lead generation, social media management, and marketing activities.</li>
+                    <li>Help plan and deliver business websites and AI-assisted digital product ideas.</li>
+                    <li>Support student community communications and internship-program coordination.</li>
+                  </ul>
                 </div>
+              </div>
+            </section>
+          </div>
+
+          <aside className="space-y-8">
+            <section>
+              <h2 className="font-syne text-lg font-bold mb-3 pb-2 border-b border-[var(--card-border)]">Education</h2>
+              <div className="flex gap-3">
+                <GraduationCap className="w-5 h-5 text-primary shrink-0 mt-1" />
                 <div>
-                  <h4 className="text-sm font-bold text-foreground mb-2">Cloud & MLOps</h4>
-                  <p className="text-sm text-[var(--muted)] leading-relaxed">AWS, GCP, Docker, Kubernetes, GitHub Actions, MLflow</p>
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-foreground mb-2">Software Engineering</h4>
-                  <p className="text-sm text-[var(--muted)] leading-relaxed">Python, TypeScript, React, Next.js, Node.js, FastAPI, REST/GraphQL</p>
+                  <h3 className="text-sm font-semibold">BS Software Engineering (BSSE)</h3>
+                  <p className="text-sm text-[var(--muted)] mt-1">COMSATS University Islamabad, Wah Campus</p>
+                  <p className="text-xs text-primary mt-1">3rd semester — In progress</p>
                 </div>
               </div>
             </section>
 
             <section>
-              <h3 className="font-syne text-xl font-bold text-foreground mb-4 pb-2 border-b border-[var(--card-border)]">
-                Education
-              </h3>
-              <div>
-                <h4 className="text-sm font-bold text-foreground">BSc Software Engineering</h4>
-                <p className="text-sm text-primary mb-1">Graduation: Ongoing</p>
-                <p className="text-xs text-[var(--muted)]">Specialization in AI Systems and Advanced Software Architecture.</p>
+              <h2 className="font-syne text-lg font-bold mb-3 pb-2 border-b border-[var(--card-border)]">Technical Skills</h2>
+              <div className="space-y-3 text-sm">
+                <div><h3 className="font-semibold">Programming</h3><p className="text-[var(--muted)] mt-1">Python, C++, Java (OOP fundamentals)</p></div>
+                <div><h3 className="font-semibold">Web Development</h3><p className="text-[var(--muted)] mt-1">HTML, CSS, JavaScript, TypeScript, React, Next.js</p></div>
+                <div><h3 className="font-semibold">AI Application Development</h3><p className="text-[var(--muted)] mt-1">AI API integration concepts, AI-powered app prototyping, prompt design</p></div>
+                <div><h3 className="font-semibold">Tools</h3><p className="text-[var(--muted)] mt-1">Git, GitHub, Vercel, Supabase (project use)</p></div>
               </div>
             </section>
 
-          </div>
+            <section>
+              <h2 className="font-syne text-lg font-bold mb-3 pb-2 border-b border-[var(--card-border)]">Certifications</h2>
+              <ul className="list-disc list-outside ml-4 space-y-2 text-sm text-[var(--muted)]">
+                <li>Google Prompting Essentials</li>
+                <li>Google Prompting Like a Pro</li>
+                <li>Google — Speed Up Data Analysis and Presentation Building</li>
+                <li>Google — Design Prompt for Every Day Task</li>
+                <li>Programming for Everybody: Getting Started with Python — University of Michigan / Coursera</li>
+              </ul>
+              <p className="mt-2 text-xs text-[var(--muted)]">Certificate verification links can be added when the individual credential URLs are confirmed.</p>
+            </section>
+          </aside>
         </div>
-      </div>
-      
-      {/* CSS for print specifically */}
-      <style dangerouslySetInnerHTML={{__html: `
+      </article>
+
+      <style jsx global>{`
+        @page { size: A4; margin: 12mm; }
         @media print {
-          body {
-            background-color: white !important;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
-          }
-          .glass {
-            background: white !important;
-            border: 1px solid #e2e8f0 !important;
-            backdrop-filter: none !important;
-          }
+          html, body { background: #fff !important; color: #111827 !important; }
+          body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+          main { padding: 0 !important; min-height: auto !important; }
+          article { max-width: none !important; width: 100% !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; background: #fff !important; color: #111827 !important; }
+          article header, article aside, article section { break-inside: avoid; }
+          article p, article li, article span { color: #374151 !important; }
+          a { color: #1d4ed8 !important; text-decoration: none !important; }
         }
-      `}} />
-    </div>
+      `} />
+    </main>
   );
 }
