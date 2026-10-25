@@ -15,6 +15,7 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -35,6 +36,10 @@ export default function Navbar() {
 
   const openAIChat = () => {
     setIsOpen(false);
+    if (process.env.NEXT_PUBLIC_GITHUB_PAGES === 'true') {
+      window.location.href = 'https://portfolio-vznd.vercel.app/';
+      return;
+    }
     window.dispatchEvent(new CustomEvent('portfolio:open-ai-chat'));
   };
 
@@ -96,7 +101,7 @@ export default function Navbar() {
                   <span>K</span>
                 </button>
                 <a
-                  href="/resume"
+                  href={`${basePath}/resume/`}
                   className="text-xs font-semibold text-foreground border border-gray-200 px-4 py-2 hover:bg-gray-50 transition-colors"
                 >
                   Resume

@@ -1,0 +1,80 @@
+name: CI and GitHub Pages
+
+on:
+  pull_request:
+    branches: [main, working]
+  push:
+    branches: [main, working]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build static GitHub Pages site
+        env:
+          GITHUB_PAGES: 'true'
+          NEXT_PUBLIC_GITHUB_PAGES: 'true'
+          NEXT_PUBLIC_BASE_PATH: '/portfolio'
+        run: |
+          # Next.js static export cannot include API route handlers. Keep the
+          # Vercel chat API in source control, but exclude it from this static build.
+          mv src/app/api/chat/route.ts /tmp/portfolio-chat-route.ts
+          restore_api_route() {
+            mkdir -p src/app/api/chat
+            if [ -f /tmp/portfolio-chat-route.ts ]; then
+              mv /tmp/portfolio-chat-route.ts src/app/api/chat/route.ts
+            fi
+          }
+          trap restore_api_route EXIT
+          npm run build:pages
+          restore_api_route
+          trap - EXIT
+
+      - name: Add GitHub Pages no-Jekyll marker
+        run: touch out/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
