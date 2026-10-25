@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, Github, X, ExternalLink, Code2, Layout, Database } from 'lucide-react';
+import { ArrowUpRight, X, ExternalLink, Code2, Layout, Database } from 'lucide-react';
 import Image from 'next/image';
 
 const projects = [
@@ -48,15 +48,15 @@ const projects = [
   {
     id: 'medi-finder',
     title: 'Medi Finder',
-    category: 'AI Healthcare Assistant',
-    shortDesc: 'Project showcase: AI-powered healthcare accessibility.',
-    description: 'An AI healthcare project focused on accessibility, medication information, and intelligent interaction for patients needing quick medical guidance.',
+    category: 'Healthcare Hackathon Project',
+    shortDesc: 'Hackathon concept for more accessible medicine information.',
+    description: 'Medi Finder AI was developed as a hackathon project concept focused on prescription understanding, medicine information, and safer access to health guidance in Urdu and English. It does not currently have a public live demo link.',
     tech: ['Python', 'AI Application Concepts', 'Frontend'],
-    liveUrl: '#',
+    liveUrl: null,
     problem: 'Patients often struggle to understand prescriptions, find alternative medicines, or check for drug interactions without immediate doctor access.',
-    solution: 'Prototyped an AI healthcare assistant capable of scanning prescriptions and providing verified medicine information in multiple languages.',
+    solution: 'The project concept brings together prescription scanning, medicine alternatives, interaction-checking support, and Urdu/English access. Medical decisions still require qualified professional guidance.',
     features: ['Prescription Scanning', 'Medicine Information', 'Alternatives Search', 'Urdu/English Experience'],
-    contribution: 'Core Concept, AI Integration Planning & Development.',
+    contribution: 'Hackathon project work with teammates Majid Khan and Shahyan Abbas.',
   }
 ];
 
@@ -241,14 +241,12 @@ export default function Projects() {
                       </div>
 
                       <div className="pt-8 border-t border-gray-100 flex flex-col gap-4">
-                        {selectedProject.liveUrl !== '#' && (
+                        {selectedProject.liveUrl && (
                           <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-4 bg-foreground text-background font-semibold hover:bg-primary transition-colors">
                             Live Experience <ExternalLink className="w-4 h-4" />
                           </a>
                         )}
-                        <a href="#" className="flex items-center justify-center gap-2 w-full py-4 bg-white border border-gray-200 text-foreground font-semibold hover:bg-gray-50 transition-colors">
-                          Source Code <Github className="w-4 h-4" />
-                        </a>
+
                       </div>
                     </div>
 
