@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "check": "npm run typecheck && npm run lint && npm run build",
-    "build:pages": "next build"
+    "check": "npm run typecheck && npm run lint && npm run build"
   },
   "dependencies": {
     "@ai-sdk/openai": "^0.0.36",
