@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import AIChatbot from '@/components/AIChatbot';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = {\n  metadataBase: new URL('https://portfolio-vznd.vercel.app'),\n  alternates: { canonical: '/' },
   title: 'Mustafa Hussain | Python Developer & Aspiring AI Engineer',
   description:
     'Software Engineering Student at COMSATS University Islamabad (Wah Campus), Python Developer, AI-powered application builder, and Co-Founder & COO at CloudExify.',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://mustafa-hussain.vercel.app',
+    url: 'https://portfolio-vznd.vercel.app',
     title: 'Mustafa Hussain | Python Developer & Aspiring AI Engineer',
     description:
       'Software Engineering Student at COMSATS University Islamabad (Wah Campus), Python Developer, AI-powered application builder, and Co-Founder & COO at CloudExify.',
