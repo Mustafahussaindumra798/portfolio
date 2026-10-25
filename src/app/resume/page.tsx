@@ -177,7 +177,7 @@ export default function ResumePage() {
           article p, article li, article span { color: #374151 !important; }
           a { color: #1d4ed8 !important; text-decoration: none !important; }
         }
-      `} />
+      `}</style>
     </main>
   );
 }
