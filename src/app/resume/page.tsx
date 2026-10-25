@@ -1,4 +1,5 @@
-import { ArrowLeft, Download, Mail, MapPin, Globe, Github, Linkedin, Briefcase, GraduationCap } from 'lucide-react';
+import { ArrowLeft, Mail, MapPin, Globe, Github, Linkedin, Briefcase, GraduationCap } from 'lucide-react';
+import ResumePrintButton from '@/components/ResumePrintButton';
 import Link from 'next/link';
 
 export const metadata = {
@@ -40,13 +41,7 @@ export default function ResumePage() {
         <Link href="/" className="inline-flex items-center gap-2 text-[var(--muted)] hover:text-primary transition-colors text-sm font-medium">
           <ArrowLeft className="w-4 h-4" /> Back to Portfolio
         </Link>
-        <button
-          type="button"
-          onClick={() => window.print()}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-colors"
-        >
-          <Download className="w-4 h-4" /> Print / Save as PDF
-        </button>
+        <ResumePrintButton />
       </div>
 
       <article className="max-w-4xl mx-auto bg-[var(--card-bg)] border border-[var(--card-border)] rounded-2xl shadow-xl overflow-hidden print:shadow-none print:border-none print:rounded-none">
