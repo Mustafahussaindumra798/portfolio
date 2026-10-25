@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Command } from 'lucide-react';
-import Link from 'next/link';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -20,9 +19,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -30,13 +27,15 @@ export default function Navbar() {
   const handleNavClick = (href: string) => {
     setIsOpen(false);
     if (href.startsWith('#')) {
-      const el = document.querySelector(href);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     } else {
       window.location.href = href;
     }
+  };
+
+  const openAIChat = () => {
+    setIsOpen(false);
+    window.dispatchEvent(new CustomEvent('portfolio:open-ai-chat'));
   };
 
   return (
@@ -53,8 +52,6 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
           <div className="flex items-center justify-between">
-            
-            {/* Logo */}
             <a
               href="#home"
               onClick={(e) => {
@@ -71,7 +68,6 @@ export default function Navbar() {
               </span>
             </a>
 
-            {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-6">
               {navLinks.map((link) => (
                 <a
@@ -86,12 +82,14 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
-              
+
               <div className="w-px h-4 bg-gray-200 ml-2" />
-              
+
               <div className="flex items-center gap-3">
                 <button
+                  type="button"
                   onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
+                  aria-label="Open command menu"
                   className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-md text-xs font-mono text-muted hover:text-foreground hover:border-gray-300 transition-colors"
                 >
                   <Command className="w-3 h-3" />
@@ -104,7 +102,8 @@ export default function Navbar() {
                   Resume
                 </a>
                 <button
-                  onClick={() => document.querySelector('.group.flex.items-center.justify-center.overflow-hidden')?.dispatchEvent(new MouseEvent('click', { bubbles: true }))}
+                  type="button"
+                  onClick={openAIChat}
                   className="text-xs font-semibold text-white bg-foreground px-4 py-2 hover:bg-primary transition-colors"
                 >
                   Ask My AI
@@ -112,11 +111,12 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Mobile Toggle */}
             <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden relative z-50 p-2 text-foreground"
-              aria-label="Toggle menu"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isOpen}
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -124,7 +124,6 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Fullscreen Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -149,17 +148,12 @@ export default function Navbar() {
                 </a>
               ))}
               <div className="w-12 h-px bg-gray-200 my-4" />
-              <a
-                href="/resume"
-                className="font-inter text-lg font-semibold text-foreground mb-2"
-              >
+              <a href="/resume" className="font-inter text-lg font-semibold text-foreground mb-2">
                 Download Resume &rarr;
               </a>
               <button
-                onClick={() => {
-                  setIsOpen(false);
-                  document.querySelector('.group.flex.items-center.justify-center.overflow-hidden')?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-                }}
+                type="button"
+                onClick={openAIChat}
                 className="font-inter text-lg font-semibold text-primary"
               >
                 Ask My AI &rarr;

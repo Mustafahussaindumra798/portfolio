@@ -32,9 +32,17 @@ export default function AIChatbot() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const openChat = () => {
+      setIsOpen(true);
+      setShowTooltip(false);
+    };
+    window.addEventListener('portfolio:open-ai-chat', openChat);
+    return () => window.removeEventListener('portfolio:open-ai-chat', openChat);
+  }, []);
+
   return (
     <>
-      {/* Toggle Button & Tooltip */}
       <div className="fixed bottom-24 right-6 z-50 flex flex-col items-end gap-4">
         <AnimatePresence>
           {showTooltip && !isOpen && (
@@ -54,7 +62,10 @@ export default function AIChatbot() {
         </AnimatePresence>
 
         <motion.button
+          type="button"
           onClick={() => { setIsOpen(!isOpen); setShowTooltip(false); }}
+          aria-label={isOpen ? 'Close Mustafa AI chat' : 'Open Mustafa AI chat'}
+          aria-expanded={isOpen}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-primary via-primary to-accent text-white shadow-[0_10px_30px_-5px_rgba(14,165,233,0.5)] flex items-center justify-center overflow-hidden group"
@@ -74,16 +85,14 @@ export default function AIChatbot() {
         </motion.button>
       </div>
 
-      {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 40, scale: 0.9, transformOrigin: 'bottom right' }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.9 }}
-            className="fixed bottom-44 right-6 z-50 w-[380px] md:w-[420px] h-[550px] bg-white dark:bg-slate-900 rounded-[32px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col border border-primary/10"
+            className="fixed bottom-44 right-6 z-50 w-[min(380px,calc(100vw-3rem))] md:w-[420px] h-[min(550px,calc(100dvh-13rem))] bg-white dark:bg-slate-900 rounded-[32px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col border border-primary/10"
           >
-            {/* Header */}
             <div className="p-6 bg-gradient-to-r from-primary to-accent border-b border-white/10 flex items-center justify-between relative overflow-hidden">
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
               <div className="flex items-center gap-4 relative z-10">
@@ -98,32 +107,19 @@ export default function AIChatbot() {
                   </div>
                 </div>
               </div>
-              <button onClick={() => setIsOpen(false)} className="text-white/60 hover:text-white relative z-10 transition-colors">
+              <button type="button" onClick={() => setIsOpen(false)} aria-label="Close chat" className="text-white/60 hover:text-white relative z-10 transition-colors">
                 <X className="w-6 h-6" />
               </button>
             </div>
 
-            {/* Messages */}
-            <div 
-              ref={scrollRef}
-              className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth bg-slate-50/50 dark:bg-slate-900/50"
-            >
+            <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth bg-slate-50/50 dark:bg-slate-900/50">
               {messages.map((msg, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                >
+                <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`flex gap-3 max-w-[85%] ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                     <div className={`w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center shadow-lg ${msg.role === 'user' ? 'bg-accent text-white' : 'bg-primary text-white'}`}>
                       {msg.role === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
                     </div>
-                    <div className={`p-4 rounded-2xl text-sm font-medium leading-relaxed ${
-                      msg.role === 'user' 
-                        ? 'bg-accent text-white rounded-tr-none shadow-xl shadow-accent/20' 
-                        : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-tl-none shadow-xl border border-slate-100 dark:border-slate-700'
-                    }`}>
+                    <div className={`p-4 rounded-2xl text-sm font-medium leading-relaxed ${msg.role === 'user' ? 'bg-accent text-white rounded-tr-none shadow-xl shadow-accent/20' : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-tl-none shadow-xl border border-slate-100 dark:border-slate-700'}`}>
                       {msg.content}
                     </div>
                   </div>
@@ -149,6 +145,7 @@ export default function AIChatbot() {
                     "How can I contact Mustafa?"
                   ].map((prompt, i) => (
                     <button
+                      type="button"
                       key={i}
                       onClick={() => handleInputChange({ target: { value: prompt } } as any)}
                       className="px-3 py-2 bg-white border border-gray-200 rounded-xl text-xs font-medium text-muted hover:border-primary hover:text-primary transition-colors text-left"
@@ -160,7 +157,6 @@ export default function AIChatbot() {
               </div>
             )}
 
-            {/* Input Area */}
             <form onSubmit={handleSubmit} className="p-6 pt-4 bg-white dark:bg-slate-800 border-t border-primary/5">
               <div className="relative group">
                 <input
@@ -168,13 +164,10 @@ export default function AIChatbot() {
                   value={input}
                   onChange={handleInputChange}
                   placeholder="Ask me something..."
+                  aria-label="Ask Mustafa's AI assistant a question"
                   className="w-full bg-slate-100 dark:bg-slate-900 border-2 border-transparent focus:border-primary/30 rounded-2xl py-4 px-5 pr-14 text-sm font-medium focus:outline-none transition-all"
                 />
-                <button
-                  type="submit"
-                  disabled={isLoading || !input.trim()}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 p-3 text-primary hover:text-accent transition-colors disabled:opacity-50"
-                >
+                <button type="submit" disabled={isLoading || !input.trim()} aria-label="Send message" className="absolute right-2 top-1/2 -translate-y-1/2 p-3 text-primary hover:text-accent transition-colors disabled:opacity-50">
                   <Send className="w-6 h-6" />
                 </button>
               </div>
